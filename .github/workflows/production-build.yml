@@ -3,11 +3,11 @@ name: Production Build
 on:
   push:
     branches:
-     - main
+      - main
 
 env:
   GITHUB_REGISTRY: ghcr.io
-  IMAGE_NAME: chukwunonsofrank/yfxai
+  IMAGE_NAME: chukwunonsofrank/qxgpt
 
 jobs:
   build:
