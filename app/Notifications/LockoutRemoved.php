@@ -53,7 +53,7 @@ class LockoutRemoved extends Notification implements ShouldQueue
     return (new MailMessage)
       ->subject('Strategy Reset Complete')
       ->greeting("Hi " . $this->name . ',')
-      ->line("Your previous trading session has ended successfully. You can now start a new session on your Yfxai bot anytime.");
+      ->line("Your previous trading session has ended successfully. You can now start a new session on your Qxgpt bot anytime.");
   }
 
   /**

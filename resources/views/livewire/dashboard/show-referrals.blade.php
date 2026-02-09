@@ -112,10 +112,10 @@
                         <div>
                             <div class="relative">
                                 <input id="referral_link" type="text" class="hidden"
-                                    value="{{ 'https://yfxai.com/register?ref=' . auth()->user()->referral_code }}">
+                                    value="{{ 'https://qxgpt.com/register?ref=' . auth()->user()->referral_code }}">
                                 <input type="text" name="hs-trailing-icon"
                                     class="py-3 px-4 pe-20 block w-full border-2 border-[#26252a] text-white bg-transparent rounded-lg font-mono font-bold text-xs focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
-                                    value="{{ 'https://yfxai.com/register?ref=' . auth()->user()->referral_code }}"
+                                    value="{{ 'https://qxgpt.com/register?ref=' . auth()->user()->referral_code }}"
                                     readonly>
                                 <div x-on:click="$store.showReferralsPage.copyReferralLink()"
                                     class="absolute inset-y-0 end-0 flex items-center gap-x-2 cursor-pointer z-20 pe-4">

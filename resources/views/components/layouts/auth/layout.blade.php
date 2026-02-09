@@ -26,7 +26,7 @@
         }
 
         .btn-disabled {
-            background: #2c917e;
+            background: #3b71ff;
             border-radius: 0.375rem;
             border: none;
             cursor: not-allowed;
@@ -49,10 +49,16 @@
             Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).set('gRecaptchaResponse', token);
         }
     </script>
-    @livewireStyles
+    {{-- @livewireStyles --}}
     @vite('resources/css/app.css')
 
     @vite('resources/js/app.js')
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 
 </head>
 
@@ -61,11 +67,11 @@
         <nav class="navbar navbar-expand-lg bg-custom py-2">
             <div class="container">
                 <a class="navbar-brand d-flex flex-row align-items-center gap-2 justify-content-center" href="/">
-                    <img src="{{ asset('homeassets/img/qxgpt.svg') }}" alt="Logo" width="40"
+                    <img src="{{ asset('homeassets/img/qxgpt.svg') }}" alt="Logo" width="70"
                         class="d-inline-block align-text-top">
                     <h3 class="text-white fs-5 pb-0 mb-0 px-1 d-none d-sm-none d-lg-block"
                         style="letter-spacing: 1px!important;"><b>Qxgpt</b> <span class="text-success"
-                            style="color:#40ffdd!important;"><b>BOT</b></span></h3>
+                            style="color:#3b71ff!important;"><b>BOT</b></span></h3>
 
                 </a>
 
@@ -125,11 +131,11 @@
                 <div class="col-lg-5">
                     <a class="navbar-brand d-flex flex-row align-items-center gap-2 justify-content-start"
                         href="#">
-                        <img src="{{ asset('homeassets/img/qxgpt.svg') }}" alt="Logo" width="40"
+                        <img src="{{ asset('homeassets/img/qxgpt.svg') }}" alt="Logo" width="70"
                             class="d-inline-block align-text-top">
                         <h3 class="text-white fs-5 pb-0 mb-0 px-1 d-none d-sm-none d-lg-block"
                             style="letter-spacing: 1px!important;"><b>Qxgpt</b> <span class="text-success"
-                                style="color:#40ffdd!important;"><b>BOT</b></span></h3>
+                                style="color:#3b71ff!important;"><b>BOT</b></span></h3>
 
                     </a>
                     <p class="py-3" style="font-size: 12px;">Qxgpt bot is suitable for both newbie traders and

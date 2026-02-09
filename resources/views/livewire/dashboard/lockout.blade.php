@@ -41,7 +41,7 @@
                             <div>
                                 <a href="{{ route('dashboard.robot.traderoom') }}">
                                     <button type="button"
-                                        class="p-3 w-full text-center text-sm font-semibold rounded-lg bg-accent text-black shadow-2xs cursor-pointer focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
+                                        class="p-3 w-full text-center text-sm font-semibold rounded-lg bg-accent text-white shadow-2xs cursor-pointer focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
                                         Go to active trade
                                     </button>
                                 </a>

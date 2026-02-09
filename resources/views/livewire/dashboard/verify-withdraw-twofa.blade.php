@@ -16,7 +16,7 @@
                 <div>
                     <a wire:click="verify2fa()">
                         <button type="button" wire:loading.attr="disabled"
-                            class="py-2.5 cursor-pointer px-4 w-full md:px-6 text-center gap-x-2 text-sm font-semibold rounded-lg bg-accent text-black focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
+                            class="py-2.5 cursor-pointer px-4 w-full md:px-6 text-center gap-x-2 text-sm font-semibold rounded-lg bg-accent text-white focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
                             <i wire:loading class="fa-solid fa-circle-notch fa-spin"></i>
                             <span wire:loading.remove>Verify 2FA</span>
                         </button>

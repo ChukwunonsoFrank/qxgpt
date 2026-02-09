@@ -1,6 +1,6 @@
 {
-  "name": "Yfxai - Automated AI Trading",
-  "short_name": "Yfxai",
+  "name": "Qxgpt - Automated AI Trading",
+  "short_name": "Qxgpt",
   "description": "AI Robot That Trades For You And Makes Daily Profit.",
   "start_url": "/login",
   "scope": "/",
@@ -39,7 +39,7 @@
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Yfxai Trading Robot"
+      "label": "Qxgpt Trading Robot"
     }
   ]
 }

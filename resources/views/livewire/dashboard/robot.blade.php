@@ -10,7 +10,7 @@
                     <div class="w-full flex flex-col bg-dashboard rounded-xl pointer-events-auto">
                         <div class="flex justify-between items-center py-3 px-4 border-b border-[#26252a]">
                             <h3 id="hs-vertically-centered-modal-label" class="font-bold text-white">
-                                How to use the Yfxai Robot
+                                How to use the Qxgpt Robot
                             </h3>
                             <button type="button"
                                 class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-dim text-white  focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none"
@@ -48,7 +48,7 @@
                                 </ul>
                             </div>
                             <div class="mt-4 text-white text-sm">
-                                Feel free to contact us if you need any help with using the Yfxai Robot.
+                                Feel free to contact us if you need any help with using the Qxgpt Robot.
                             </div>
                         </div>
                     </div>
@@ -105,14 +105,14 @@
                         <div class="grid grid-cols-2 gap-x-2">
                             <label for="hs-vertical-radio-in-form-demo"
                                 wire:click="selectAccountType('Demo account', 'demo')"
-                                class="px-4 py-2 w-full {{ $this->accountTypeSlug === 'demo' ? 'border-3 border-[#40FFDD]' : 'border border-[#323335]' }} bg-transparent rounded-lg text-base focus:border-[#1a1b20] focus:ring-[#1a1b20]">
+                                class="px-4 py-2 w-full {{ $this->accountTypeSlug === 'demo' ? 'border-3 border-[#3b71ff]' : 'border border-[#323335]' }} bg-transparent rounded-lg text-base focus:border-[#1a1b20] focus:ring-[#1a1b20]">
                                 <div class="flex-1 text-center">
                                     <h2 class="text-white uppercase font-semibold text-sm">Demo</h2>
                                 </div>
                             </label>
                             <label for="hs-vertical-radio-in-form-live"
                                 wire:click="selectAccountType('Live account', 'live')"
-                                class="px-4 py-2 w-full {{ $this->accountTypeSlug === 'live' ? 'border-3 border-[#40FFDD]' : 'border border-[#323335]' }} bg-transparent rounded-lg text-base focus:border-[#1a1b20] focus:ring-[#1a1b20]">
+                                class="px-4 py-2 w-full {{ $this->accountTypeSlug === 'live' ? 'border-3 border-[#3b71ff]' : 'border border-[#323335]' }} bg-transparent rounded-lg text-base focus:border-[#1a1b20] focus:ring-[#1a1b20]">
                                 <div class="flex-1 text-center text-white">
                                     <h2 class="text-white uppercase font-semibold text-sm">Live</h2>
                                 </div>
@@ -334,7 +334,7 @@
                 <div class="sticky bottom-2">
                     <a x-on:click="$store.robotPage.toggleTradeDetailsConfirmationModal($wire);">
                         <button type="button" wire:loading.attr="disabled"
-                            class="py-2.5 cursor-pointer px-4 w-full md:px-6 text-center gap-x-2 text-sm font-semibold rounded-lg bg-accent text-black focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
+                            class="py-2.5 cursor-pointer px-4 w-full md:px-6 text-center gap-x-2 text-sm font-semibold rounded-lg bg-accent text-white focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
                             <i wire:loading class="fa-solid fa-circle-notch fa-spin"></i>
                             <span wire:loading.remove>Start Robot</span>
                         </button>
@@ -372,7 +372,7 @@
                                         <button type="button"
                                             x-on:click="$store.robotPage.toggleTradeDetailsConfirmationModal($wire); $store.robotPage.toggleStartRobotConfirmationModal($wire);"
                                             type="button"
-                                            class="p-3 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-black cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
+                                            class="p-3 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             Start
                                         </button>
                                     </div>
@@ -409,7 +409,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center mb-4">
-                                    <h1 class="text-white font-bold text-xl">Download Yfxai App</h1>
+                                    <h1 class="text-white font-bold text-xl">Download Qxgpt App</h1>
                                 </div>
 
                                 <div class="mt-6 flex items-center justify-center gap-x-2">
@@ -900,17 +900,17 @@
             toggleStartRobotConfirmationModal(wire) {
                 if (wire.isBanned) {
                     toastRobotError(
-                        'Your account has been banned. Reach out to support at support@yfxai.com.'
+                        'Your account has been banned. Reach out to support at info@qxgpt.com.'
                     );
                     return;
                 }
 
-                if (wire.country === 'Brazil') {
-                    toastRobotError(
-                        'Brazil Region Upgrade in Progress. Trades and withdrawals are temporarily paused while we complete a system upgrade. Services will resume shortly'
-                    );
-                    return;
-                }
+                // if (wire.country === 'Brazil') {
+                //     toastRobotError(
+                //         'Brazil Region Upgrade in Progress. Trades and withdrawals are temporarily paused while we complete a system upgrade. Services will resume shortly'
+                //     );
+                //     return;
+                // }
 
                 // if (wire.activeBotCount > 0) {
                 //     if (wire.accountTypeSlug === 'live' && wire.totalLiveBalance < wire

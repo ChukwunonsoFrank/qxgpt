@@ -24,7 +24,7 @@
 
                                     <div class="d-grid">
                                         <flux:button variant="primary" type="submit"
-                                            class="w-full! h-12! rounded-md! p-2! bg-accent! text-black!">
+                                            class="w-full! h-12! rounded-md! p-2! bg-accent! border-none! text-white!">
                                             {{ __('Email Password Reset Link') }}</flux:button>
                                     </div>
 

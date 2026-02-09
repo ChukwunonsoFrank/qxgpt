@@ -3,7 +3,7 @@
         <livewire:dashboard.partials.desktop-navbar />
         <div class="lg:h-full lg:flex-1 lg:pl-6 lg:pr-4">
             <div class="my-3 sticky top-0 bg-dashboard pb-2 lg:pt-4">
-                <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Trades by Yfxai Scalping Bot</h1>
+                <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Trades by Qxgpt Scalping Bot</h1>
             </div>
             <div class="lg:h-full pb-14 lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 @forelse ($trades as $trade)

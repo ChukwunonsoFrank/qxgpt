@@ -20,7 +20,7 @@
                             <span class="flex-1">Email: {{ auth()->user()->email }}</span>
                             <a href="{{ route('dashboard.security.changeemail') }}">
                                 <button type="button"
-                                    class="px-2 py-1 cursor-pointer inline-flex items-center justify-center gap-x-1 text-xs font-semibold rounded-lg bg-accent text-black focus:outline-hidden">
+                                    class="px-2 py-1 cursor-pointer inline-flex items-center justify-center gap-x-1 text-xs font-semibold rounded-lg bg-accent text-white focus:outline-hidden">
                                     Change Email
                                 </button>
                             </a>
@@ -39,7 +39,7 @@
                             <span class="list-disc list-inside mr-1"
                                 style="display:inline-block;width:0.8em;">&#8226;</span>
                             <input id="uid" type="text" class="hidden" value="{{ auth()->user()->uid }}">
-                            <span class="flex-1">Yfxai UID: {{ auth()->user()->uid }}</span>
+                            <span class="flex-1">Qxgpt UID: {{ auth()->user()->uid }}</span>
                             <button type="button" x-on:click="$store.accountInformationPage.copyUID()"
                                 class="py-1 px-2 cursor-pointer inline-flex items-center justify-center text-xs font-semibold rounded-lg bg-[#282828] border border-[#323335] text-white focus:outline-hidden">
                                 Copy

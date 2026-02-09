@@ -39,7 +39,7 @@ class AppLogin extends Component
       if ($user["is_banned"]) {
         $this->dispatch(
           "login-error",
-          message: "Your account has been banned. Reach out to support at support@yfxai.com.",
+          message: "Your account has been banned. Reach out to support at info@qxgpt.com.",
         )->self();
         return;
       }

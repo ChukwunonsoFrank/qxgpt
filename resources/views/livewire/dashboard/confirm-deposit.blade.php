@@ -122,7 +122,7 @@
                             <div class="flex items-center gap-x-1">
                                 <div>
                                     <label for="file-upload"
-                                        class="inline-flex items-center gap-x-1 bg-[#40FFDD] text-black font-semibold text-xs py-1 px-2 rounded-lg cursor-pointer">
+                                        class="inline-flex items-center gap-x-1 bg-[#3b71ff] text-black font-semibold text-xs py-1 px-2 rounded-lg cursor-pointer">
                                         <div class="-mt-0.5">
                                             {{-- <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -283,7 +283,7 @@
                                         <button type="button"
                                             x-on:click="$store.confirmDepositPage.toggleClickOnPaidModal();"
                                             type="button"
-                                            class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-black cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
+                                            class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             Okay
                                         </button>
                                     </div>
@@ -335,7 +335,7 @@
                                         <button type="button"
                                             x-on:click="$store.confirmDepositPage.isClickOnPaidModalQROpen = false; $store.confirmDepositPage.isClickOnPaidViewedOnce = true; $store.confirmDepositPage.isQRModalOpen = !$store.confirmDepositPage.isQRModalOpen;"
                                             type="button"
-                                            class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-black cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
+                                            class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             Okay
                                         </button>
                                     </div>
@@ -387,7 +387,7 @@
                                         <button type="button"
                                             x-on:click="$store.confirmDepositPage.isDepositStepsModalOpen = false;"
                                             type="button"
-                                            class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-black cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
+                                            class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             Okay
                                         </button>
                                     </div>
@@ -425,7 +425,7 @@
                     <div class="md:px-52">
                         <a wire:click="createDeposit()">
                             <button type="button" wire:loading.attr="disabled"
-                                class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-lg bg-accent text-black focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
+                                class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-lg bg-accent text-white focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
                                 <i wire:loading class="fa-solid fa-circle-notch fa-spin"></i>
                                 <span wire:loading.remove>Submit</span>
                             </button>

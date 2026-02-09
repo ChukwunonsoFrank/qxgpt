@@ -15,7 +15,7 @@ class Deposit extends Component
 
   public string $amount = "";
 
-  public int $minimumDepositAmount = 100;
+  public int $minimumDepositAmount = 150;
 
   public $paymentMethod;
 

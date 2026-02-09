@@ -106,7 +106,7 @@
                         <div class="flex items-center gap-x-1">
                             <div>
                                 <label for="file-upload"
-                                    class="inline-flex items-center gap-x-1 bg-[#40FFDD] text-black text-xs p-2 rounded-lg cursor-pointer">
+                                    class="inline-flex items-center gap-x-1 bg-[#3b71ff] text-black text-xs p-2 rounded-lg cursor-pointer">
                                     <div class="-mt-0.5">
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +142,7 @@
                 <div>
                     <a wire:click="submitKYCApplication()">
                         <button type="button" wire:loading.attr="disabled"
-                            class="py-2.5 cursor-pointer px-4 w-full md:px-6 text-center gap-x-2 text-sm font-semibold rounded-lg bg-accent text-black focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
+                            class="py-2.5 cursor-pointer px-4 w-full md:px-6 text-center gap-x-2 text-sm font-semibold rounded-lg bg-accent text-white focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
                             <i wire:loading class="fa-solid fa-circle-notch fa-spin"></i>
                             <span wire:loading.remove>Get Verified</span>
                         </button>
@@ -170,7 +170,7 @@
                                                 <g mask="url(#mask0_17_26)">
                                                     <path
                                                         d="M23.9995 4.00024C35.0454 4.00024 43.9996 12.9542 43.9996 24.0003C43.9996 35.0463 35.0454 44.0002 23.9995 44.0002C12.9535 44.0002 3.99951 35.0463 3.99951 24.0003C3.99951 12.9542 12.9535 4.00024 23.9995 4.00024ZM23.9795 20.0002H21.9995C21.4898 20.0008 20.9995 20.196 20.6288 20.5459C20.2581 20.8959 20.035 21.3742 20.0052 21.883C19.9753 22.3919 20.1409 22.893 20.468 23.2839C20.7952 23.6748 21.2593 23.926 21.7655 23.9862L21.9995 24.0003V33.9802C21.9995 35.0201 22.7875 35.8803 23.7995 35.9883L24.0196 36.0003H24.9995C25.4202 36.0003 25.8302 35.8676 26.171 35.6213C26.512 35.3748 26.7664 35.0273 26.8984 34.628C27.0306 34.2286 27.0333 33.7978 26.9063 33.3968C26.7794 32.9957 26.5293 32.6448 26.1916 32.3943L25.9996 32.2683V22.0202C25.9996 20.9802 25.2114 20.1202 24.1996 20.0122L23.9795 20.0002ZM23.9995 14.0002C23.4691 14.0002 22.9604 14.2109 22.5853 14.586C22.2102 14.9611 21.9995 15.4698 21.9995 16.0002C21.9995 16.5307 22.2102 17.0394 22.5853 17.4144C22.9604 17.7895 23.4691 18.0002 23.9995 18.0002C24.5301 18.0002 25.0386 17.7895 25.4137 17.4144C25.7889 17.0394 25.9996 16.5307 25.9996 16.0002C25.9996 15.4698 25.7889 14.9611 25.4137 14.586C25.0386 14.2109 24.5301 14.0002 23.9995 14.0002Z"
-                                                        fill="#40FFDD" />
+                                                        fill="#3b71ff" />
                                                 </g>
                                             </g>
                                             <defs>
@@ -189,7 +189,7 @@
                                     <div class="flex-none">
                                         <button type="button" x-on:click="$store.kycPage.isSuccessModalOpen = false;"
                                             wire:click="robot()" type="button"
-                                            class="py-3 px-5 text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-black cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
+                                            class="py-3 px-5 text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             Okay
                                         </button>
                                     </div>

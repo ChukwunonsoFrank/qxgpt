@@ -51,9 +51,9 @@ class LoginCodeRequested extends Notification implements ShouldQueue
   public function toMail(object $notifiable): MailMessage
   {
     return (new MailMessage)
-      ->subject('Yfxai Code')
+      ->subject('Qxgpt Code')
       ->line("Your code is " . $this->code . '.')
-      ->line("Use this code to complete your registration on yfxai.");
+      ->line("Use this code to complete your registration on qxgpt.");
   }
 
   /**

@@ -8,19 +8,19 @@
             <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 <nav class="flex gap-x-1" aria-label="Tabs" role="tablist" aria-orientation="horizontal">
                     <button type="button"
-                        class="hs-tab-active:bg-accent hs-tab-active:text-black hs-tab-active:hover:text-black py-1.5 px-4 inline-flex items-center gap-x-2 text-white bg-dim border border-[#323335] text-sm font-medium text-center hover:text-accent focus:outline-hidden focus:text-accent rounded-full disabled:opacity-50 disabled:pointer-events-none {{ $this->activeTab === 'all' ? 'active' : '' }}"
+                        class="hs-tab-active:bg-accent hs-tab-active:text-white hs-tab-active:hover:text-black py-1.5 px-4 inline-flex items-center gap-x-2 text-white bg-dim border border-[#323335] text-sm font-medium text-center hover:text-accent focus:outline-hidden focus:text-accent rounded-full disabled:opacity-50 disabled:pointer-events-none {{ $this->activeTab === 'all' ? 'active' : '' }}"
                         id="pills-with-brand-color-item-1" data-hs-tab="#pills-with-brand-color-1"
                         aria-controls="pills-with-brand-color-1" role="tab">
                         All
                     </button>
                     <button type="button"
-                        class="hs-tab-active:bg-accent hs-tab-active:text-black hs-tab-active:hover:text-black py-1.5 px-4 inline-flex items-center gap-x-2 text-white bg-dim border border-[#323335] text-sm font-medium text-center hover:text-accent focus:outline-hidden focus:text-accent rounded-full disabled:opacity-50 disabled:pointer-events-none {{ $this->activeTab === 'deposits' ? 'active' : '' }}"
+                        class="hs-tab-active:bg-accent hs-tab-active:text-white hs-tab-active:hover:text-black py-1.5 px-4 inline-flex items-center gap-x-2 text-white bg-dim border border-[#323335] text-sm font-medium text-center hover:text-accent focus:outline-hidden focus:text-accent rounded-full disabled:opacity-50 disabled:pointer-events-none {{ $this->activeTab === 'deposits' ? 'active' : '' }}"
                         id="pills-with-brand-color-item-2" data-hs-tab="#pills-with-brand-color-2"
                         aria-controls="pills-with-brand-color-2" role="tab">
                         Deposits
                     </button>
                     <button type="button"
-                        class="hs-tab-active:bg-accent hs-tab-active:text-black hs-tab-active:hover:text-black py-1.5 px-4 inline-flex items-center gap-x-2 text-white bg-dim border border-[#323335] text-sm font-medium text-center hover:text-accent focus:outline-hidden focus:text-accent rounded-full disabled:opacity-50 disabled:pointer-events-none {{ $this->activeTab === 'withdrawals' ? 'active' : '' }}"
+                        class="hs-tab-active:bg-accent hs-tab-active:text-white hs-tab-active:hover:text-black py-1.5 px-4 inline-flex items-center gap-x-2 text-white bg-dim border border-[#323335] text-sm font-medium text-center hover:text-accent focus:outline-hidden focus:text-accent rounded-full disabled:opacity-50 disabled:pointer-events-none {{ $this->activeTab === 'withdrawals' ? 'active' : '' }}"
                         id="pills-with-brand-color-item-3" data-hs-tab="#pills-with-brand-color-3"
                         aria-controls="pills-with-brand-color-3" role="tab">
                         Withdrawals

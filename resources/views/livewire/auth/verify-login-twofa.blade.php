@@ -21,8 +21,8 @@
                                     </div>
 
                                     <div class="d-grid">
-                                        <flux:button wire:click="verify2fa()" variant="primary"
-                                            class="w-full! h-12! rounded-md! p-2! bg-accent! text-black!">
+                                            <flux:button wire:click="verify2fa()" variant="primary"
+                                            class="w-full! h-12! rounded-md! border-none! p-2! bg-[#3b71ff]! text-white!">
                                             {{ __('Log In') }}</flux:button>
                                     </div>
                                 </div>

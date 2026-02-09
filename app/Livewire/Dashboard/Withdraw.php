@@ -14,7 +14,7 @@ class Withdraw extends Component
 
   public bool $isBanned;
 
-  public string $country;
+  // public string $country;
 
   public string $amount = "";
 
@@ -29,7 +29,7 @@ class Withdraw extends Component
   public function mount()
   {
     $this->isBanned = auth()->user()->is_banned;
-    $this->country = auth()->user()->country;
+    // $this->country = auth()->user()->country;
     $this->paymentMethods = PaymentMethod::all();
     $this->accountStatus = auth()->user()->account_status;
   }
@@ -74,13 +74,13 @@ class Withdraw extends Component
         return;
       }
 
-      if ($this->country === "Brazil") {
-        $this->dispatch(
-          "withdraw-error",
-          message: "Brazil Region Upgrade in Progress. Trades and withdrawals are temporarily paused while we complete a system upgrade. Services will resume shortly",
-        )->self();
-        return;
-      }
+      // if ($this->country === "Brazil") {
+      //   $this->dispatch(
+      //     "withdraw-error",
+      //     message: "Brazil Region Upgrade in Progress. Trades and withdrawals are temporarily paused while we complete a system upgrade. Services will resume shortly",
+      //   )->self();
+      //   return;
+      // }
 
       if ($this->accountStatus === "inactive") {
         $this->dispatch(

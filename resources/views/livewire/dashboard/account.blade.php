@@ -84,9 +84,9 @@
                                 </div>
                                 <div class="flex-1">
                                     <input id="uid" type="text" class="hidden"
-                                        value="{{ 'https://yfxai.com/register?ref=' . auth()->user()->referral_code }}">
+                                        value="{{ 'https://qxgpt.com/register?ref=' . auth()->user()->referral_code }}">
                                     <p class="text-[10px] text-[#a4a4a4]">
-                                        {{ 'https://yfxai.com/register?ref=' . auth()->user()->referral_code }}</p>
+                                        {{ 'https://qxgpt.com/register?ref=' . auth()->user()->referral_code }}</p>
                                 </div>
                                 <div class="flex-none text-end">
                                     <button type="button" x-on:click="$store.accountPage.copyUID()"
@@ -156,16 +156,16 @@
                         <div class="flex-1">
                             <a href="{{ route('dashboard.withdraw') }}">
                                 <button type="button"
-                                    class="w-full py-2 px-6 lg:px-10 cursor-pointer inline-flex items-center justify-center gap-x-1 text-sm font-semibold rounded-lg bg-accent text-black focus:outline-hidden">
+                                    class="w-full py-2 px-6 lg:px-10 cursor-pointer inline-flex items-center justify-center gap-x-1 text-sm font-semibold rounded-lg bg-accent text-white focus:outline-hidden">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M8 2V10" stroke="black" stroke-width="2" stroke-linecap="round"
+                                        <path d="M8 2V10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round" />
-                                        <path d="M11.3332 5.33333L7.99984 2L4.6665 5.33333" stroke="black"
+                                        <path d="M11.3332 5.33333L7.99984 2L4.6665 5.33333" stroke="#FFFFFF"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                         <path
                                             d="M14 10V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V10"
-                                            stroke="black" stroke-width="2" stroke-linecap="round"
+                                            stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                     </svg>
                                     Withdraw
@@ -175,13 +175,13 @@
                         <div class="flex-1">
                             <a href="{{ route('dashboard.deposit') }}">
                                 <button type="button"
-                                    class="w-full py-2 px-6 lg:px-10 cursor-pointer inline-flex items-center justify-center gap-x-1 text-sm font-semibold rounded-lg bg-accent text-black focus:outline-hidden">
+                                    class="w-full py-2 px-6 lg:px-10 cursor-pointer inline-flex items-center justify-center gap-x-1 text-sm font-semibold rounded-lg bg-accent text-white focus:outline-hidden">
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_1669_24)">
                                             <path
                                                 d="M16.5 7.5V12C16.5 12.7956 16.1839 13.5587 15.6213 14.1213C15.0587 14.6839 14.2956 15 13.5 15H4.5C3.70435 15 2.94129 14.6839 2.37868 14.1213C1.81607 13.5587 1.5 12.7956 1.5 12V7.5H16.5ZM5.2575 10.5H5.25C5.15151 10.5005 5.05408 10.5204 4.96327 10.5585C4.87247 10.5967 4.79006 10.6523 4.72077 10.7223C4.58082 10.8637 4.50276 11.0548 4.50375 11.2538C4.50424 11.3522 4.52413 11.4497 4.56228 11.5405C4.60042 11.6313 4.65608 11.7137 4.72607 11.783C4.79606 11.8523 4.87902 11.9071 4.9702 11.9443C5.06138 11.9816 5.15901 12.0005 5.2575 12C5.45641 12 5.64718 11.921 5.78783 11.7803C5.92848 11.6397 6.0075 11.4489 6.0075 11.25C6.0075 11.0511 5.92848 10.8603 5.78783 10.7197C5.64718 10.579 5.45641 10.5 5.2575 10.5ZM9.75 10.5H8.25C8.05109 10.5 7.86032 10.579 7.71967 10.7197C7.57902 10.8603 7.5 11.0511 7.5 11.25C7.5 11.4489 7.57902 11.6397 7.71967 11.7803C7.86032 11.921 8.05109 12 8.25 12H9.75C9.94891 12 10.1397 11.921 10.2803 11.7803C10.421 11.6397 10.5 11.4489 10.5 11.25C10.5 11.0511 10.421 10.8603 10.2803 10.7197C10.1397 10.579 9.94891 10.5 9.75 10.5ZM13.5 3C14.2956 3 15.0587 3.31607 15.6213 3.87868C16.1839 4.44129 16.5 5.20435 16.5 6H1.5C1.5 5.20435 1.81607 4.44129 2.37868 3.87868C2.94129 3.31607 3.70435 3 4.5 3H13.5Z"
-                                                fill="black" />
+                                                fill="#FFFFFF" />
                                         </g>
                                         <defs>
                                             <clipPath id="clip0_1669_24">
@@ -566,7 +566,7 @@
                                 <div class="flex flex-col gap-y-1">
                                     <div>
                                         <label for="file-upload"
-                                            class="inline-flex items-center gap-x-1 bg-[#40FFDD] text-black text-xs p-2 rounded-lg cursor-pointer">
+                                            class="inline-flex items-center gap-x-1 bg-[#3b71ff] text-black text-xs p-2 rounded-lg cursor-pointer">
                                             <div class="-mt-0.5">
                                                 <svg width="14" height="14" viewBox="0 0 14 14"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -602,7 +602,7 @@
                                     <a wire:click="saveProfilePicture()"
                                         x-on:click="$store.accountPage.toggleProfilePictureModal();">
                                         <button type="button" type="button"
-                                            class="py-2 px-6 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-black cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
+                                            class="py-2 px-6 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             <i wire:loading class="fa-solid fa-circle-notch fa-spin"></i>
                                             <span wire:loading.remove>Save</span>
                                         </button>

@@ -416,17 +416,17 @@
                 if (wire.isBanned) {
                     this.isPaymentMethodSelectVisible = false;
                     let message =
-                        'Your account has been banned. Reach out to support at support@yfxai.com.';
+                        'Your account has been banned. Reach out to support at info@qxgpt.com.';
                     toast('withdraw-error', message);
                     return;
                 }
 
-                if (wire.country === 'Brazil') {
-                    let message =
-                        'Brazil Region Upgrade in Progress. Trades and withdrawals are temporarily paused while we complete a system upgrade. Services will resume shortly';
-                    toast('withdraw-error', message);
-                    return;
-                }
+                // if (wire.country === 'Brazil') {
+                //     let message =
+                //         'Brazil Region Upgrade in Progress. Trades and withdrawals are temporarily paused while we complete a system upgrade. Services will resume shortly';
+                //     toast('withdraw-error', message);
+                //     return;
+                // }
 
                 if (parseFloat(this.amount) < parseInt(wire.minimumWithdrawAmount) && parseFloat(wire
                         .amount) !== 0) {

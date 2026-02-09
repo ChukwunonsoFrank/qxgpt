@@ -35,7 +35,7 @@
             <div>
                 <a href="{{ route('dashboard.security.2fa.verifytwofa') }}">
                     <button type="button"
-                        class="py-2.5 cursor-pointer px-4 w-full md:px-6 text-center gap-x-2 text-sm font-semibold rounded-lg bg-accent text-black focus:outline-hidden disabled:pointer-events-none">
+                        class="py-2.5 cursor-pointer px-4 w-full md:px-6 text-center gap-x-2 text-sm font-semibold rounded-lg bg-accent text-white focus:outline-hidden disabled:pointer-events-none">
                         Next
                     </button>
                 </a>

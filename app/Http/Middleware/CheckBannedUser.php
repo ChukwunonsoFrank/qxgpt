@@ -45,7 +45,7 @@ class CheckBannedUser
         ->route("login")
         ->with(
           "error",
-          "Your account has been banned. Contact support at support@yfxai.com",
+          "Your account has been banned. Contact support at info@qxgpt.com",
         );
     }
 

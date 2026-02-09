@@ -532,13 +532,9 @@
                                     <div aria-labelledby="Tech-headingFour" class="accordion-collapse collapse"
                                         data-bs-parent="#Tech-accordion" id="Tech-collapseFour">
                                         <div class="accordion-body" style="font-size: 14px;">
-                                            Yes, there's a 1% fee charged from profits made by the bot. For example,
-                                            when
-                                            you trade and the AI makes $100 in profits, the company charges you 1% of
-                                            the
-                                            $100 profits made by the bot, not from your capital but only from the
-                                            profits
-                                            made.
+                                            Qxgpt does not charge any hidden fees. However, there’s a small $1
+                                            withdrawal fee
+                                            applied to every withdrawals to cover network and processing costs.
                                         </div>
                                     </div>
                                 </div>
@@ -548,17 +544,15 @@
                                             class="fw-semibold accordion-button collapsed"
                                             data-bs-target="#Tech-collapseFive" style="font-size: 20px;"
                                             data-bs-toggle="collapse" type="button">
-                                            Is my funds safe?</button></h2>
+                                            How does Qxgpt benefit or make profit?</button></h2>
                                     <div aria-labelledby="Tech-headingFive" class="accordion-collapse collapse"
                                         data-bs-parent="#Tech-accordion" id="Tech-collapseFive">
                                         <div class="accordion-body" style="font-size: 14px;">
-                                            Yes! Your funds and capital is 100% safe and secured on the system, you
-                                            don't
-                                            have to be scared of loosing out, your capital is returned after every
-                                            trade.
-                                            You can choose to withdraw both your capital and profits anytime.100%
-                                            guarantee
-                                            on withdrawals.
+                                            There's a 5% commission taken from profits made by the bot. For example,
+                                            when you trade
+                                            and the AI makes $100 in profits, the company charges you 5% of the $100
+                                            profits made
+                                            by the bot, not from your capital but only from the profits made.
                                         </div>
                                     </div>
                                 </div>
@@ -568,13 +562,17 @@
                                             class="fw-semibold accordion-button collapsed"
                                             data-bs-target="#Tech-collapseTen" style="font-size: 20px;"
                                             data-bs-toggle="collapse" type="button">
-                                            How fast is Deposit and withdrawal?</button></h2>
+                                            Is my funds safe?</button></h2>
                                     <div aria-labelledby="Tech-headingTen" class="accordion-collapse collapse"
                                         data-bs-parent="#Tech-accordion" id="Tech-collapseTen">
                                         <div class="accordion-body" style="font-size: 14px;">
-                                            Deposits and Withdrawals are instantly processed and should arrive within 30
-                                            minutes maximum. There are no fees on deposits and withdrawals. Deposits and
-                                            withdrawals are processed through crypto.
+                                            Yes! Your funds and capital is 100% safe and secured on the system, you
+                                            don't
+                                            have to be scared of loosing out, your capital is returned after every
+                                            trade.
+                                            You can choose to withdraw both your capital and profits anytime. 100%
+                                            guarantee
+                                            on withdrawals.
                                         </div>
                                     </div>
                                 </div>
@@ -584,9 +582,25 @@
                                             class="fw-semibold accordion-button collapsed"
                                             data-bs-target="#Tech-collapseSeven" style="font-size: 20px;"
                                             data-bs-toggle="collapse" type="button">
-                                            Does Qxgpt Increase my returns daily?</button></h2>
+                                            How fast is deposit and withdrawal?</button></h2>
                                     <div aria-labelledby="Tech-headingSeven" class="accordion-collapse collapse"
                                         data-bs-parent="#Tech-accordion" id="Tech-collapseSeven">
+                                        <div class="accordion-body" style="font-size: 14px;">
+                                            Deposits and Withdrawals are instantly processed and should arrive within 30
+                                            minutes maximum. There are no fees on deposits and withdrawals. Deposits and
+                                            withdrawals are processed through crypto.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="Tech-headingSix"><button
+                                            aria-controls="Tech-collapseSix" aria-expanded="false"
+                                            class="fw-semibold accordion-button collapsed"
+                                            data-bs-target="#Tech-collapseSix" style="font-size: 20px;"
+                                            data-bs-toggle="collapse" type="button">
+                                            Does Qxgpt increase my returns daily?</button></h2>
+                                    <div aria-labelledby="Tech-headingSix" class="accordion-collapse collapse"
+                                        data-bs-parent="#Tech-accordion" id="Tech-collapseSix">
                                         <div class="accordion-body" style="font-size: 14px;">
                                             Yes, it does. Our AI Bot increases customer assets daily and tries to
                                             eliminate
@@ -599,47 +613,43 @@
                                     </div>
                                 </div>
                                 <div class="accordion-item">
-                                    <h2 class="accordion-header" id="Tech-headingSix"><button
-                                            aria-controls="Tech-collapseSix" aria-expanded="false"
-                                            class="fw-semibold accordion-button collapsed"
-                                            data-bs-target="#Tech-collapseSix" style="font-size: 20px;"
-                                            data-bs-toggle="collapse" type="button">
-                                            What is the minimum deposit and withdrawal?</button></h2>
-                                    <div aria-labelledby="Tech-headingSix" class="accordion-collapse collapse"
-                                        data-bs-parent="#Tech-accordion" id="Tech-collapseSix">
-                                        <div class="accordion-body" style="font-size: 14px;">
-                                            The minimum deposit is $100, the minimum withdrawal is $10. There are no
-                                            limits
-                                            on deposits and withdrawals, you can choose to deposit and withdraw any
-                                            amounts
-                                            as the forex and crypto market is unlimited. Deposits and withdrawals are
-                                            processed through cryptocurrency.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
                                     <h2 class="accordion-header" id="Tech-headingNine"><button
                                             aria-controls="Tech-collapseNine" aria-expanded="false"
                                             class="fw-semibold accordion-button collapsed"
                                             data-bs-target="#Tech-collapseNine" style="font-size: 20px;"
                                             data-bs-toggle="collapse" type="button">
-                                            What else do I need to know?</button></h2>
+                                            What is the minimum deposit and withdrawal?</button></h2>
                                     <div aria-labelledby="Tech-headingNine" class="accordion-collapse collapse"
                                         data-bs-parent="#Tech-accordion" id="Tech-collapseNine">
                                         <div class="accordion-body" style="font-size: 14px;">
-                                            Getting started with Qxgpt is very easy, you don't need any technical
-                                            knowledge
-                                            to earn from this. there are 4 strategies you can choose from each of them
-                                            has a
-                                            certain minimum amount and a certain profit percentage, you will have to
-                                            choose
-                                            the strategy that matches your trade amount. This works for every country,
-                                            the
-                                            robot trades on both weekdays and weekends, trades forex and crypto during
-                                            the
-                                            week and trades only crypto during weekends. You can always contact our live
-                                            support if you need further help.
+                                            The minimum deposit is $150, the minimum withdrawal is $25. There are no
+                                            limits
+                                            on deposits and withdrawals, you can choose to deposit and withdraw any
+                                            amounts
+                                            as the forex and crypto market is unlimited. Deposits and withdrawals are
+                                            processed through cryptocurrency.
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="Tech-headingNiner"><button
+                                            aria-controls="Tech-collapseNiner" aria-expanded="false"
+                                            class="fw-semibold accordion-button collapsed"
+                                            data-bs-target="#Tech-collapseNiner" style="font-size: 20px;"
+                                            data-bs-toggle="collapse" type="button">
+                                            What else do I need to know?</button></h2>
+                                    <div aria-labelledby="Tech-headingNiner" class="accordion-collapse collapse"
+                                        data-bs-parent="#Tech-accordion" id="Tech-collapseNiner">
+                                        <div class="accordion-body" style="font-size: 14px;">
+                                           Getting started with Qxgpt is very easy, you don't need any
+                                technical knowledge to earn from this. there is a scalping
+                                strategy already setup for you, all you need to do is input
+                                a trade amount and choose if it’s Demo or Live you’d want to
+                                trade on. This works for every country, the robot trades on
+                                both weekdays and weekends, trades forex and crypto during
+                                the week and trades only crypto during weekends. You can
+                                always contact our live support if you need further help.
                                         </div>
                                     </div>
                                 </div>

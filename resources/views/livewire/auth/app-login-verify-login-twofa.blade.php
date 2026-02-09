@@ -12,7 +12,7 @@
                         <div class="elementor-widget-container" style="text-align: center;">
                             <a href="{{ route('home') }}">
                                 <img class="w-32 text-center inline"
-                                    src="{{ asset('wp-content/uploads/2023/05/yfxai-logo.png') }}" alt="Logo" />
+                                    src="{{ asset('wp-content/uploads/2023/05/qxgpt-logo.png') }}" alt="Logo" />
                             </a>
                         </div>
                     </div>

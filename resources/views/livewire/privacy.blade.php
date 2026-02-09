@@ -4,7 +4,7 @@
         <h1 class="text-white my-6 font-medium tracking-tight" style="font-size: 2rem">Privacy Policy</h1>
         <p class="font-medium text-md text-white">
             Hereby is described the practice of collecting and processing of personal data provided by persons (you)
-            accessing a website yfxai.com (the Site) or the App of the company Yfxai Bot (the Company or we).
+            accessing a website qxgpt.com (the Site) or the App of the company Qxgpt Bot (the Company or we).
             <br><br>
             We inform you that the provisions of this Privacy Policy are subject to the up-to-date edition of the
             Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of
@@ -45,7 +45,7 @@
             the following categories of data:</p>
 
         <p class="font-medium text-md text-white mb-4"><b>3.2.1</b> your email address and ID of the account at the
-            Yfxai Trade platform. These are the only parameters that we send directly to our server;</p>
+            Qxgpt Trade platform. These are the only parameters that we send directly to our server;</p>
 
         <p class="font-medium text-md text-white mb-4"><b>3.2.2</b> data, which we may collect through automated
             means. Through your use of the Site, we may also monitor and collect tracking information related to usages
@@ -350,11 +350,11 @@
 
         <p class="font-medium text-md text-white  mb-4"><b>8.15</b> Some features of the App may require you to access
             third-party resources via the WebView or a similar built-in instrument for opening websites within the
-            interface of the App. While you may be prompted to login to your account at the Yfxai Trade platform and
+            interface of the App. While you may be prompted to login to your account at the Qxgpt Trade platform and
             connect it to the App in order to use some features of the App, we do not collect your login credentials and
             are unable to use your account. The only relevant data that we may collect through automated means is the
             statistics on the App’s performance and automated actions performed by the Apps via your account at the
-            Yfxai Trade platform.
+            Qxgpt Trade platform.
         </p>
 
         <p class="font-medium text-md text-white"><b>8.16</b> In order to ensure the proper performance of the App and
@@ -373,7 +373,7 @@
             additionally within reasonable time via email provided by you for the case or as your contact email.</p>
 
         <p class="font-medium text-md text-white"><b>9.2</b> If you require any additional information or have any
-            further questions concerning this Privacy Policy, please contact us at support@yfxai.com.</p>
+            further questions concerning this Privacy Policy, please contact us at info@qxgpt.com.</p>
 
     </div>
 </div>

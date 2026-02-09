@@ -32,8 +32,8 @@
                 </svg>
             </div>
             <div>
-                <a href="mailto:support@yfxai.com" class="text-white text-sm"
-                    style="text-decoration: underline;">support@yfxai.com</a>
+                <a href="mailto:info@qxgpt.com" class="text-white text-sm"
+                    style="text-decoration: underline;">info@qxgpt.com</a>
             </div>
         </div>
 

@@ -32,13 +32,13 @@
                         @if ($this->is2faEnabled)
                             <a href="{{ route('dashboard.security.2fa.disabletwofa') }}">
                                 <button type="button"
-                                    class="w-full py-1 px-3 cursor-pointer inline-flex items-center justify-center text-[10px] font-semibold rounded-md bg-accent text-black focus:outline-hidden">
+                                    class="w-full py-1 px-3 cursor-pointer inline-flex items-center justify-center text-[10px] font-semibold rounded-md bg-accent text-white focus:outline-hidden">
                                     Disable
                                 </button>
                             </a>
                         @else
                             <button type="button" wire:click="generateSecretKey()"
-                                class="w-full py-1 px-3 cursor-pointer inline-flex items-center justify-center text-[10px] font-semibold rounded-md bg-accent text-black focus:outline-hidden">
+                                class="w-full py-1 px-3 cursor-pointer inline-flex items-center justify-center text-[10px] font-semibold rounded-md bg-accent text-white focus:outline-hidden">
                                 Enable
                             </button>
                         @endif

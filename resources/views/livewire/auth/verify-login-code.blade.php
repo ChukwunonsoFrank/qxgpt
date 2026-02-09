@@ -34,7 +34,7 @@
 
                                     <div class="d-grid">
                                         <flux:button wire:click="verifyLoginCode()" variant="primary"
-                                            class="w-full! h-12! rounded-md! p-2! bg-accent! text-black!">
+                                            class="w-full! h-12! rounded-md! border-none! p-2! bg-[#3b71ff]! text-white!">
                                             {{ __('Create Account') }}</flux:button>
                                     </div>
                                 </div>
