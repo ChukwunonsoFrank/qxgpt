@@ -35,107 +35,107 @@ class Login extends Component
   public function login()
   {
     try {
-      // if ($this->gRecaptchaResponse === null) {
-      //   $this->dispatch(
-      //     "login-error",
-      //     message: "Please confirm you are not a robot.",
-      //   )->self();
-      // }
-
-      // $recatpchaResponse = Http::get(
-      //   "https://www.google.com/recaptcha/api/siteverify",
-      //   [
-      //     "secret" => config("services.recaptcha.secret"),
-      //     "response" => $this->gRecaptchaResponse,
-      //   ],
-      // );
-
-      // $result = $recatpchaResponse->json();
-
-      // if (
-      //   $recatpchaResponse->successful() &&
-      //   $result["success"] == true
-      // ) {
-      $user = User::where("email", "=", $this->email, "and")->first();
-
-      if ($user["is_banned"]) {
+      if ($this->gRecaptchaResponse === null) {
         $this->dispatch(
           "login-error",
-          message: "Your account has been banned. Reach out to support at support@yfxai.com.",
+          message: "Please confirm you are not a robot.",
         )->self();
-        return;
       }
 
-      if ($user && $user["two_factor_enabled"]) {
-        $this->redirectRoute("login.verifylogintwofa", [
-          "email" => $this->email,
-          "password" => $this->password,
-        ]);
-      } else {
-        $this->validate();
+      $recatpchaResponse = Http::get(
+        "https://www.google.com/recaptcha/api/siteverify",
+        [
+          "secret" => config("services.recaptcha.secret"),
+          "response" => $this->gRecaptchaResponse,
+        ],
+      );
 
-        $this->ensureIsNotRateLimited();
+      $result = $recatpchaResponse->json();
 
-        if (
-          !Auth::attempt(
-            [
-              "email" => $this->email,
-              "password" => $this->password,
-            ],
-            $this->remember,
-          )
-        ) {
-          RateLimiter::hit($this->throttleKey());
+      if (
+        $recatpchaResponse->successful() &&
+        $result["success"] == true
+      ) {
+        $user = User::where("email", "=", $this->email, "and")->first();
 
-          throw ValidationException::withMessages([
-            "email" => __("auth.failed"),
+        if ($user["is_banned"]) {
+          $this->dispatch(
+            "login-error",
+            message: "Your account has been banned. Reach out to support at support@yfxai.com.",
+          )->self();
+          return;
+        }
+
+        if ($user && $user["two_factor_enabled"]) {
+          $this->redirectRoute("login.verifylogintwofa", [
+            "email" => $this->email,
+            "password" => $this->password,
           ]);
+        } else {
+          $this->validate();
+
+          $this->ensureIsNotRateLimited();
+
+          if (
+            !Auth::attempt(
+              [
+                "email" => $this->email,
+                "password" => $this->password,
+              ],
+              $this->remember,
+            )
+          ) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+              "email" => __("auth.failed"),
+            ]);
+          }
+
+          RateLimiter::clear($this->throttleKey());
+          Session::regenerate();
+
+          session()->flash("just_logged_in", true);
+
+          $loggedInUser = User::find(Auth::id(), ["*"]);
+
+          if (
+            $loggedInUser->country === null ||
+            $loggedInUser->country === "N/A"
+          ) {
+            $ipApiEndpoint =
+              "http://ip-api.com/json/" . $this->getClientIPV4();
+
+            $ipApiResponse = Http::get($ipApiEndpoint);
+
+            $ipApiResult = $ipApiResponse->json();
+
+            $loggedInUser->country =
+              $ipApiResponse->successful() &&
+              $ipApiResult["status"] === "success"
+              ? $ipApiResult["country"]
+              : "N/A";
+
+            $loggedInUser->ip_address = $this->getClientIPV4();
+          }
+
+          $loggedInUser->last_login_at = now();
+          $loggedInUser->save();
+
+          if (Auth::user()->is_admin) {
+            return redirect("/admin/dashboard");
+          }
+
+          $this->redirectIntended(
+            default: route("dashboard.robot", absolute: false),
+          );
         }
-
-        RateLimiter::clear($this->throttleKey());
-        Session::regenerate();
-
-        session()->flash("just_logged_in", true);
-
-        $loggedInUser = User::find(Auth::id(), ["*"]);
-
-        if (
-          $loggedInUser->country === null ||
-          $loggedInUser->country === "N/A"
-        ) {
-          $ipApiEndpoint =
-            "http://ip-api.com/json/" . $this->getClientIPV4();
-
-          $ipApiResponse = Http::get($ipApiEndpoint);
-
-          $ipApiResult = $ipApiResponse->json();
-
-          $loggedInUser->country =
-            $ipApiResponse->successful() &&
-            $ipApiResult["status"] === "success"
-            ? $ipApiResult["country"]
-            : "N/A";
-
-          $loggedInUser->ip_address = $this->getClientIPV4();
-        }
-
-        $loggedInUser->last_login_at = now();
-        $loggedInUser->save();
-
-        if (Auth::user()->is_admin) {
-          return redirect("/admin/dashboard");
-        }
-
-        $this->redirectIntended(
-          default: route("dashboard.robot", absolute: false),
-        );
+      } else {
+        $this->dispatch(
+          "login-error",
+          message: "Please confirm you are not a robot.",
+        )->self();
       }
-      // } else {
-      //   $this->dispatch(
-      //     "login-error",
-      //     message: "Please confirm you are not a robot.",
-      //   )->self();
-      // }
     } catch (\Exception $e) {
       $this->dispatch("login-error", message: $e->getMessage())->self();
     }
