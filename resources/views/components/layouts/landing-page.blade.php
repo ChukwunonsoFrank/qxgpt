@@ -51,7 +51,7 @@
         <nav class="navbar navbar-expand-lg bg-custom py-2">
             <div class="container">
                 <a class="navbar-brand d-flex flex-row align-items-center gap-2 justify-content-center" href="/">
-                    <img src="{{ asset('homeassets/img/Ctxailogo.png') }}" alt="Logo" width="40"
+                    <img src="{{ asset('homeassets/img/qxgpt.svg') }}" alt="Logo" width="40"
                         class="d-inline-block align-text-top">
                     <h3 class="text-white fs-5 pb-0 mb-0 px-1 d-none d-sm-none d-lg-block"
                         style="letter-spacing: 1px!important;"><b>Qxgpt</b> <span class="text-success"
@@ -115,7 +115,7 @@
                 <div class="col-lg-5">
                     <a class="navbar-brand d-flex flex-row align-items-center gap-2 justify-content-start"
                         href="#">
-                        <img src="{{ asset('homeassets/img/Ctxailogo.png') }}" alt="Logo" width="40"
+                        <img src="{{ asset('homeassets/img/qxgpt.svg') }}" alt="Logo" width="40"
                             class="d-inline-block align-text-top">
                         <h3 class="text-white fs-5 pb-0 mb-0 px-1 d-none d-sm-none d-lg-block"
                             style="letter-spacing: 1px!important;"><b>Qxgpt</b> <span class="text-success"
