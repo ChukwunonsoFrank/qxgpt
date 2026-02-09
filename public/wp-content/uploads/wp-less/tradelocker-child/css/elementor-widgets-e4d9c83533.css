@@ -1,0 +1,176 @@
+.open-walkthrough {
+  border: 0;
+  background: #5da3f2;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 12px;
+  height: 40px;
+  width: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -60px;
+}
+.walkthrough {
+  border-radius: 0;
+  display: none;
+  flex-direction: column;
+  flex: 0 0 auto;
+  font-size: 14px;
+  height: 244px;
+  overflow: hidden;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  max-width: 560px;
+  width: 100%;
+  z-index: 1;
+}
+.walkthrough.show {
+  display: flex;
+  opacity: 0;
+  transform: translateY(72px);
+}
+.walkthrough.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+.walkthrough .walkthrough-body {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  text-align: center;
+  gap: 10px;
+}
+.walkthrough .walkthrough-body .prev-screen,
+.walkthrough .walkthrough-body .next-screen {
+  align-self: center;
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-size: 24px;
+  opacity: 1;
+  outline: none;
+  padding: 16px;
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 2;
+}
+.walkthrough .walkthrough-body .prev-screen:hover,
+.walkthrough .walkthrough-body .next-screen:hover,
+.walkthrough .walkthrough-body .prev-screen:focus,
+.walkthrough .walkthrough-body .next-screen:focus,
+.walkthrough .walkthrough-body .prev-screen:active,
+.walkthrough .walkthrough-body .next-screen:active {
+  color: white;
+  transform-origin: center;
+  transform: scale(1.25);
+  background-color: unset !important;
+}
+.walkthrough .walkthrough-body .prev-screen:disabled,
+.walkthrough .walkthrough-body .next-screen:disabled {
+  opacity: 0;
+}
+.walkthrough .walkthrough-body .prev-screen.prev-screen,
+.walkthrough .walkthrough-body .next-screen.prev-screen {
+  order: 1;
+}
+.walkthrough .walkthrough-body .prev-screen.next-screen,
+.walkthrough .walkthrough-body .next-screen.next-screen {
+  order: 3;
+}
+.walkthrough .walkthrough-body .prev-screen svg,
+.walkthrough .walkthrough-body .next-screen svg {
+  position: absolute;
+  top: 50%;
+}
+.walkthrough .walkthrough-body .prev-screen.prev-screen svg,
+.walkthrough .walkthrough-body .next-screen.prev-screen svg {
+  transform: rotate(90deg);
+}
+.walkthrough .walkthrough-body .prev-screen.next-screen svg,
+.walkthrough .walkthrough-body .next-screen.next-screen svg {
+  transform: rotate(-90deg);
+}
+.walkthrough .walkthrough-body .screens {
+  flex: 1;
+  align-self: stretch;
+  position: relative;
+  padding: 0;
+  order: 2;
+  margin: 0;
+}
+.walkthrough .walkthrough-body .screens.prev .screen {
+  transform: translateX(-100%);
+}
+.walkthrough .walkthrough-body .screens.next .screen {
+  transform: translateX(100%);
+}
+.walkthrough .walkthrough-body .screens .screen {
+  position: absolute;
+  list-style-type: none;
+  opacity: 0;
+  transition: all 1.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.walkthrough .walkthrough-body .screens .screen.next-enter {
+  transform: translateX(100%);
+}
+.walkthrough .walkthrough-body .screens .screen.next-enter-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+.walkthrough .walkthrough-body .screens .screen.next-exit {
+  transform: translateX(0) scale(1);
+}
+.walkthrough .walkthrough-body .screens .screen.next-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.walkthrough .walkthrough-body .screens .screen.prev-enter {
+  transform: translateX(-100%);
+}
+.walkthrough .walkthrough-body .screens .screen.prev-enter-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+.walkthrough .walkthrough-body .screens .screen.prev-exit {
+  transform: translateX(0) scale(1);
+}
+.walkthrough .walkthrough-body .screens .screen.prev-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.walkthrough .walkthrough-body h3 {
+  font-size: 15px;
+  line-height: 1.4em;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.walkthrough .walkthrough-body p {
+  line-height: 1.6em;
+  font-size: 13px;
+  margin-top: 16px;
+  padding-top: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+.walkthrough .walkthrough-pagination {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+.walkthrough .walkthrough-pagination .dot {
+  background: rgba(0, 0, 0, 0.25);
+  height: 2px;
+  margin: 0 4px;
+  transform: scale(0.75);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 25px;
+}
+.walkthrough .walkthrough-pagination .dot.active {
+  background: white;
+  transform: scale(1);
+  transition-delay: 0.4s;
+}

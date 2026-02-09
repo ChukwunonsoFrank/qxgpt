@@ -1,0 +1,223 @@
+.platform .tl-grey-mask {
+  padding: 1.4em;
+}
+.prop-firm-pricing .options,
+.prop-firm-pricing .summary-wrapper {
+  border: 1px solid var(--venus-orange) !important;
+  background: none;
+}
+.prop-firm-pricing .addons-wrapper .addon {
+  border: 1px dashed var(--venus-orange) !important;
+  background: none;
+}
+.prop-firm-pricing .users-slider {
+  accent-color: var(--venus-orange);
+}
+.prop-firm-pricing .option-btn#optionB.selected {
+  background: #FF6100;
+}
+.prop-firm-pricing .option-btn#optionA.selected {
+  background: var(--venus-orange);
+}
+.prop-firm-pricing .addon input[type="checkbox"]:checked + label::before {
+  background: var(--mars-gradient);
+}
+.prop-firm-pricing .users-slider.extra-demo,
+.prop-firm-pricing #extra-accounts {
+  display: none;
+}
+.tournament-pricing .options,
+.tournament-pricing .summary-wrapper {
+  border: 1px solid var(--nebula-turquoise) !important;
+  background: none;
+}
+.tournament-pricing .addons-wrapper .addon {
+  border: 1px dashed var(--nebula-turquoise) !important;
+  background: none;
+}
+.tournament-pricing .users-slider {
+  accent-color: var(--nebula-turquoise);
+}
+.tournament-pricing .option-btn#optionB.selected {
+  background: #07dbbb;
+}
+.tournament-pricing .option-btn#optionA.selected {
+  background: var(--nebula-turquoise);
+}
+.tournament-pricing .addon input[type="checkbox"]:checked + label::before {
+  background: var(--mars-gradient);
+}
+.tournament-pricing .users-slider.extra-demo,
+.tournament-pricing #extra-accounts {
+  display: none;
+}
+.broker-pricing .options,
+.broker-pricing .summary-wrapper {
+  border: 1px solid var(--uranus-green) !important;
+  background: none;
+}
+.broker-pricing .addons-wrapper .addon {
+  border: 1px dashed var(--uranus-green) !important;
+  background: none;
+}
+.broker-pricing .users-slider {
+  accent-color: var(--uranus-green);
+}
+.broker-pricing .option-btn {
+  width: 100%;
+}
+.broker-pricing .option-btn#optionB.selected {
+  background: var(--uranus-green);
+}
+.broker-pricing .option-btn#optionA.selected {
+  background: var(--uranus-green);
+}
+.broker-pricing .addon input[type="checkbox"]:checked + label::before {
+  background: var(--neptune-gradient);
+}
+.broker-pricing .users-slider.extra-demo {
+  display: block;
+}
+.broker-pricing .option-btn {
+  height: 190px;
+  align-items: center;
+}
+.broker-pricing .option-btn h5,
+.broker-pricing .option-btn p {
+  display: none;
+}
+.option-benefits .tl-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2em;
+  column-gap: 1em;
+}
+.subscription,
+.users-slider,
+.addons {
+  margin-bottom: 20px;
+}
+.addons-wrapper {
+  gap: 1em;
+}
+.addon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 100%;
+}
+.addon input[type="checkbox"],
+.addon input[type="number"] {
+  margin-left: 10px;
+}
+.summary-section {
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+.summary-section h3,
+.summary-section h2 {
+  margin: 0 0 10px 0;
+}
+.total {
+  margin-top: 40px;
+  border-top: 1px solid var(--dark-grey);
+  padding-top: 20px;
+}
+.total > * {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.total > * h6,
+.total > * span {
+  font-family: 'Euclid Square', sans-serif !important;
+}
+.total > * h6 {
+  margin-bottom: 0.1em !important;
+}
+#total-price,
+#subtotal-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+#total-price h3 {
+  margin: 0 0.1em;
+}
+#schedule-call {
+  background-color: #f85c3c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.addon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.addon div {
+  flex-basis: 70%;
+}
+.addon input[type="checkbox"] {
+  display: none;
+}
+.addon label {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.addon label::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: background-color 0.3s;
+}
+.addon label::after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+  transition: transform 0.3s;
+}
+.addon input[type="checkbox"]:checked + label::after {
+  transform: translateX(26px);
+}
+.users-slider {
+  margin-top: 2em;
+}
+.users-slider label {
+  width: 100%;
+}
+.users-slider input {
+  width: 100%;
+}
+@media (min-width: 591px) {
+  .summary-wrapper {
+    position: sticky;
+    top: 132px;
+  }
+}
+@media (max-width: 591px) {
+  .summary-column {
+    background-color: var(--space-black) !important;
+    position: sticky;
+    bottom: 20px;
+    z-index: 2;
+  }
+}

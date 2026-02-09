@@ -1,0 +1,15 @@
+#########
+#########     !DANGER ZONE!
+#########
+
+##  This is DANGEROUS!
+##  Having this file on your machine will allow UNSAFE code execution.
+##  Security and syntax checks will be disabled, so any code you execute from Studio will run.
+##
+##  Be extra careful if anyone else instructed you to add this file and then sent you a bot code!
+##  They could be tricking you into running malicious code to steal your passwords, delete your data, etc.
+##  You must be CERTAIN the code you run is safe. Don't run other people's code.
+
+#########  If you are unsure, delete this file immediately and contact TradeLocker support.
+
+Account IDs that will have security disabled:
