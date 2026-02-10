@@ -24,6 +24,8 @@ class AdminDepositIntent extends Component
 
   public $secondUpline;
 
+  public $thirdUpline;
+
   public array $allowReferral = [];
 
   public int $level = 0;
@@ -48,6 +50,7 @@ class AdminDepositIntent extends Component
     // Reset properties
     $this->firstUpline = null;
     $this->secondUpline = null;
+    $this->thirdUpline = null;
     $this->level = 0;
 
     $currentUpline = User::where(
@@ -73,6 +76,20 @@ class AdminDepositIntent extends Component
         $this->level = 2;
         Log::info("Second upline found: " . $this->firstUpline["id"]);
         Log::info("Level: " . $this->level);
+        $currentUpline = User::where(
+          "referral_code",
+          "=",
+          $currentUpline["referred_by"],
+          "and",
+        )->first();
+        if ($currentUpline !== null) {
+          $this->thirdUpline = $this->secondUpline;
+          $this->secondUpline = $this->firstUpline;
+          $this->firstUpline = $currentUpline;
+          $this->level = 3;
+          Log::info("Third upline found: " . $this->firstUpline["id"]);
+          Log::info("Level: " . $this->level);
+        }
       }
     }
   }
@@ -189,6 +206,110 @@ class AdminDepositIntent extends Component
       );
 
       Log::info("Ran level 1 & 2 referral payout for user IDs: " . $firstUpline->id . ", " . $secondUpline->id);
+    }
+
+    if ($this->level === 3) {
+      // Lock all upline users to prevent race conditions
+      $thirdUpline = User::where("id", "=", $this->thirdUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$thirdUpline) {
+        throw new \Exception("Third upline user not found");
+      }
+
+      $secondUpline = User::where("id", "=", $this->secondUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$secondUpline) {
+        throw new \Exception("Second upline user not found");
+      }
+
+      $firstUpline = User::where("id", "=", $this->firstUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$firstUpline) {
+        throw new \Exception("First upline user not found");
+      }
+
+      /**
+       * Top upline commission
+       */
+      $commission = intval(round($depositAmount * (2 / 100)));
+      $newFirstUplineBalance = $firstUpline->live_balance + $commission;
+
+      $firstUpline->live_balance = $newFirstUplineBalance;
+      $firstUpline->save();
+
+      Referral::create([
+        "user_id" => $firstUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "3",
+      ]);
+
+      $firstUpline->notify(
+        new CommissionEarned(
+          $firstUpline->name,
+          $depositOwnerName,
+          strval($commission / 100),
+          "deposit",
+        ),
+      );
+
+      /**
+       * Middle upline commission
+       */
+      $commission = intval(round($depositAmount * (4 / 100)));
+      $newSecondUplineBalance = $secondUpline->live_balance + $commission;
+
+      $secondUpline->live_balance = $newSecondUplineBalance;
+      $secondUpline->save();
+
+      Referral::create([
+        "user_id" => $secondUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "2",
+      ]);
+
+      $secondUpline->notify(
+        new CommissionEarned(
+          $secondUpline->name,
+          $depositOwnerName,
+          strval($commission / 100),
+          "deposit",
+        ),
+      );
+
+      /**
+       * Last upline commission
+       */
+      $commission = intval(round($depositAmount * (8 / 100)));
+      $newThirdUplineBalance = $thirdUpline->live_balance + $commission;
+
+      $thirdUpline->live_balance = $newThirdUplineBalance;
+      $thirdUpline->save();
+
+      Referral::create([
+        "user_id" => $thirdUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "1",
+      ]);
+
+      $thirdUpline->notify(
+        new CommissionEarned(
+          $thirdUpline->name,
+          $depositOwnerName,
+          strval($commission / 100),
+          "deposit",
+        ),
+      );
+
+      Log::info("Ran level 1, 2 & 3 referral payout for user IDs: " . $firstUpline->id . ", " . $secondUpline->id . ", " . $thirdUpline->id);
     }
   }
 

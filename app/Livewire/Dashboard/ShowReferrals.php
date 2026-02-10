@@ -55,6 +55,7 @@ class ShowReferrals extends Component
     {
         $level1Downlines = [];
         $level2Downlines = [];
+        $level3Downlines = [];
 
         $level1Referrals = User::where(
             "referred_by",
@@ -68,6 +69,7 @@ class ShowReferrals extends Component
         $level1Referrals->each(function ($user) use (
             &$level1Downlines,
             &$level2Downlines,
+            &$level3Downlines,
         ) {
             $level1Downlines[] = $user->name;
 
@@ -82,12 +84,26 @@ class ShowReferrals extends Component
 
             foreach ($level2Referrals as $level2User) {
                 $level2Downlines[] = $level2User->name;
+
+                $level3Referrals = User::where(
+                    "referred_by",
+                    "=",
+                    $level2User->referral_code,
+                    "and",
+                )
+                    ->latest()
+                    ->get();
+
+                foreach ($level3Referrals as $level3User) {
+                    $level3Downlines[] = $level3User->name;
+                }
             }
         });
 
         return view("livewire.dashboard.show-referrals", [
             "level1Downlines" => $level1Downlines,
             "level2Downlines" => $level2Downlines,
+            "level3Downlines" => $level3Downlines,
         ]);
     }
 }

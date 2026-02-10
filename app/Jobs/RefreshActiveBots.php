@@ -848,6 +848,7 @@ class RefreshActiveBots implements ShouldQueue
   ) {
     $firstUpline = null;
     $secondUpline = null;
+    $thirdUpline = null;
     $level = 0;
     $currentUpline = User::where("referral_code", $referredBy)->first();
 
@@ -862,6 +863,16 @@ class RefreshActiveBots implements ShouldQueue
         $secondUpline = $firstUpline;
         $firstUpline = $currentUpline;
         $level = 2;
+        $currentUpline = User::where(
+          "referral_code",
+          $currentUpline["referred_by"],
+        )->first();
+        if ($currentUpline !== null) {
+          $thirdUpline = $secondUpline;
+          $secondUpline = $firstUpline;
+          $firstUpline = $currentUpline;
+          $level = 3;
+        }
       }
     }
 
@@ -963,6 +974,108 @@ class RefreshActiveBots implements ShouldQueue
       $lockedFirstUpline->notify(
         new CommissionEarned(
           $lockedFirstUpline->name,
+          $botOwnerName,
+          strval($this->normalizeAmount($commission)),
+          "trade profit",
+        ),
+      );
+    }
+
+    if ($level === 3) {
+      // Lock all upline users to prevent race conditions
+      $lockedThirdUpline = User::where("id", "=", $thirdUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$lockedThirdUpline) {
+        throw new \Exception("Third upline user not found");
+      }
+
+      $lockedSecondUpline = User::where("id", "=", $secondUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$lockedSecondUpline) {
+        throw new \Exception("Second upline user not found");
+      }
+
+      $lockedFirstUpline = User::where("id", "=", $firstUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$lockedFirstUpline) {
+        throw new \Exception("First upline user not found");
+      }
+
+      /**
+       * Top upline commission(4% on trade profits)
+       */
+      $commission = intval(round($robotProfit * (4 / 100)));
+      $newFirstUplineBalance = $lockedFirstUpline->live_balance + $commission;
+
+      $lockedFirstUpline->live_balance = $newFirstUplineBalance;
+      $lockedFirstUpline->save();
+
+      Referral::create([
+        "user_id" => $lockedFirstUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "3",
+      ]);
+
+      $lockedFirstUpline->notify(
+        new CommissionEarned(
+          $lockedFirstUpline->name,
+          $botOwnerName,
+          strval($this->normalizeAmount($commission)),
+          "trade profit",
+        ),
+      );
+
+      /**
+       * Middle upline commission(8% on trade profits)
+       */
+      $commission = intval(round($robotProfit * (8 / 100)));
+      $newSecondUplineBalance = $lockedSecondUpline->live_balance + $commission;
+
+      $lockedSecondUpline->live_balance = $newSecondUplineBalance;
+      $lockedSecondUpline->save();
+
+      Referral::create([
+        "user_id" => $lockedSecondUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "2",
+      ]);
+
+      $lockedSecondUpline->notify(
+        new CommissionEarned(
+          $lockedSecondUpline->name,
+          $botOwnerName,
+          strval($this->normalizeAmount($commission)),
+          "trade profit",
+        ),
+      );
+
+      /**
+       * Last upline commission(12% on trade profits)
+       */
+      $commission = intval(round($robotProfit * (12 / 100)));
+      $newThirdUplineBalance = $lockedThirdUpline->live_balance + $commission;
+
+      $lockedThirdUpline->live_balance = $newThirdUplineBalance;
+      $lockedThirdUpline->save();
+
+      Referral::create([
+        "user_id" => $lockedThirdUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "1",
+      ]);
+
+      $lockedSecondUpline->notify(
+        new CommissionEarned(
+          $lockedSecondUpline->name,
           $botOwnerName,
           strval($this->normalizeAmount($commission)),
           "trade profit",

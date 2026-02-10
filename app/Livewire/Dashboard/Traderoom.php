@@ -95,6 +95,8 @@ class Traderoom extends Component
 
   public $secondUpline;
 
+  public $thirdUpline;
+
   public int $level = 0;
 
   public function mount()
@@ -485,6 +487,7 @@ class Traderoom extends Component
     // Reset properties
     $this->firstUpline = null;
     $this->secondUpline = null;
+    $this->thirdUpline = null;
     $this->level = 0;
 
     $currentUpline = User::where(
@@ -506,6 +509,16 @@ class Traderoom extends Component
         $this->secondUpline = $this->firstUpline;
         $this->firstUpline = $currentUpline;
         $this->level = 2;
+        $currentUpline = User::where(
+          "referral_code",
+          $currentUpline["referred_by"],
+        )->first();
+        if ($currentUpline !== null) {
+          $this->thirdUpline = $this->secondUpline;
+          $this->secondUpline = $this->firstUpline;
+          $this->firstUpline = $currentUpline;
+          $this->level = 3;
+        }
       }
     }
   }
@@ -613,6 +626,108 @@ class Traderoom extends Component
       $firstUpline->notify(
         new CommissionEarned(
           $firstUpline->name,
+          $botOwnerName,
+          strval($this->normalizeAmount($commission)),
+          "trade profit",
+        ),
+      );
+    }
+
+    if ($this->level === 3) {
+      // Lock all upline users to prevent race conditions
+      $thirdUpline = User::where("id", "=", $this->thirdUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$thirdUpline) {
+        throw new \Exception("Third upline user not found");
+      }
+
+      $secondUpline = User::where("id", "=", $this->secondUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$secondUpline) {
+        throw new \Exception("Second upline user not found");
+      }
+
+      $firstUpline = User::where("id", "=", $this->firstUpline["id"], "and")
+        ->lockForUpdate()
+        ->first();
+
+      if (!$firstUpline) {
+        throw new \Exception("First upline user not found");
+      }
+
+      /**
+       * Top upline commission(4% on trade profits)
+       */
+      $commission = intval(round($robotProfit * (4 / 100)));
+      $newFirstUplineBalance = $firstUpline->live_balance + $commission;
+
+      $firstUpline->live_balance = $newFirstUplineBalance;
+      $firstUpline->save();
+
+      Referral::create([
+        "user_id" => $firstUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "3",
+      ]);
+
+      $firstUpline->notify(
+        new CommissionEarned(
+          $firstUpline->name,
+          $botOwnerName,
+          strval($this->normalizeAmount($commission)),
+          "trade profit",
+        ),
+      );
+
+      /**
+       * Middle upline commission(8% on trade profits)
+       */
+      $commission = intval(round($robotProfit * (8 / 100)));
+      $newSecondUplineBalance = $secondUpline->live_balance + $commission;
+
+      $secondUpline->live_balance = $newSecondUplineBalance;
+      $secondUpline->save();
+
+      Referral::create([
+        "user_id" => $secondUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "2",
+      ]);
+
+      $secondUpline->notify(
+        new CommissionEarned(
+          $secondUpline->name,
+          $botOwnerName,
+          strval($this->normalizeAmount($commission)),
+          "trade profit",
+        ),
+      );
+
+      /**
+       * Last upline commission(12% on trade profits)
+       */
+      $commission = intval(round($robotProfit * (12 / 100)));
+      $newThirdUplineBalance = $thirdUpline->live_balance + $commission;
+
+      $thirdUpline->live_balance = $newThirdUplineBalance;
+      $thirdUpline->save();
+
+      Referral::create([
+        "user_id" => $thirdUpline->id,
+        "referral_code" => $referralCode,
+        "amount" => $commission,
+        "level" => "1",
+      ]);
+
+      $thirdUpline->notify(
+        new CommissionEarned(
+          $thirdUpline->name,
           $botOwnerName,
           strval($this->normalizeAmount($commission)),
           "trade profit",

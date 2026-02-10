@@ -187,6 +187,19 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="py-3 px-5 bg-dim border-t-2 border-b border-[#323335]">
+                        <p class="text-white text-sm font-bold">Level 3 <span class="text-xs">(2% on deposits, 4% on
+                                trades)</span></p>
+                    </div>
+                    <div class="px-4 py-8 flex items-center gap-1 flex-wrap">
+                        @foreach ($level3Downlines as $dl)
+                            <div class="flex items-center rounded-full bg-accent px-3 py-2">
+                                <div>
+                                    <p class="text-xs text-black">{{ $dl }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
