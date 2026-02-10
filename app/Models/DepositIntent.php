@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DepositIntent extends Model
 {
-  protected $fillable = ['user_id', 'name', 'amount', 'payment_method', 'status'];
+  protected $fillable = ['user_id', 'name', 'amount', 'payment_method', 'allow_referral', 'status'];
 
   public function user(): BelongsTo
   {

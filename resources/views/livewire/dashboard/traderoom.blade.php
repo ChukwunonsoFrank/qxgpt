@@ -377,12 +377,9 @@
                                                 <p class="text-zinc-300 text-xs">Target Profit</p>
                                             </div>
                                             <div class="flex-none text-end text-white font-medium text-sm">
-                                                8% - 14%
-                                            </div>
-                                            {{-- <div class="flex-none text-end text-white font-medium text-sm">
                                                 {{ $this->botOneMinProfitLimit }}%
                                                 - {{ $this->botOneMaxProfitLimit }}%
-                                            </div> --}}
+                                            </div>
                                         </div>
 
                                         <div class="flex items-center justify-center space-x-2 pt-2">

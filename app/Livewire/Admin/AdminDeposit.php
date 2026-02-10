@@ -25,6 +25,8 @@ class AdminDeposit extends Component
 
   public int $level = 0;
 
+  public array $allowReferral = [];
+
   public function getStatusIndicatorColor(string $status)
   {
     if ($status === "pending") {
@@ -223,8 +225,11 @@ class AdminDeposit extends Component
         $user->live_balance = $newBalance;
         $user->save();
 
+        $allowReferral = $this->allowReferral[$depositId] ?? true;
+
         // Update deposit status
         $deposit->status = "confirmed";
+        $deposit->allow_referral = $allowReferral;
         $deposit->save();
 
         // Send notification (inside transaction to ensure it only happens once)
@@ -233,7 +238,7 @@ class AdminDeposit extends Component
         );
 
         // Process referral payouts if applicable
-        if ($user->referred_by !== null) {
+        if ($user->referred_by !== null && $allowReferral) {
           Log::info("Processing referral payouts for user ID: " . $user->id);
           $this->computeUpline($user->referred_by);
           Log::info("Current Level: " . $this->level);
@@ -284,6 +289,13 @@ class AdminDeposit extends Component
       })
       ->latest()
       ->paginate(10);
+
+    foreach ($deposits as $deposit) {
+      if (!array_key_exists($deposit->id, $this->allowReferral)) {
+        $this->allowReferral[$deposit->id] = (bool) $deposit->allow_referral;
+      }
+    }
+
     return view("livewire.admin.admin-deposit", [
       "deposits" => $deposits,
     ]);

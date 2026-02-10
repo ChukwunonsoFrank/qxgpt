@@ -248,12 +248,13 @@
                     <div class="grid space-y-2">
                         @foreach ($this->strategies as $strategy)
                             <div class="relative">
-                                <div
+                                {{-- <div
                                     class="absolute -inset-0 bg-linear-to-r from-accent to-[#F76CC6] rounded-lg blur opacity-50">
-                                </div>
+                                </div> --}}
                                 <label for="hs-vertical-radio-in-form-{{ $strategy['id'] }}"
                                     wire:key="strategy-{{ $strategy['id'] }}"
-                                    class="flex relative px-3 py-3 pb-4 gap-x-4 items-center w-full bg-dashboard rounded-lg border-3 border-[#26252a] text-sm focus:border-blue-500 focus:ring-blue-500">
+                                    @click="await $wire.selectStrategy('{{ $strategy['id'] }}'); $store.robotPage.checkStrategyMinimumAmount($wire)"
+                                    class="flex relative px-3 py-3 pb-4 gap-x-4 items-center w-full bg-dashboard rounded-lg cursor-pointer {{ $this->strategy['id'] === $strategy['id'] ? 'border-3 border-[#3b71ff]' : 'border-1 border-[#26252a]' }} text-sm focus:border-blue-500 focus:ring-blue-500">
                                     <div class="flex-none w-12">
                                         <img class="w-24" src="{{ asset('assets/images/robot-illustration.png') }}"
                                             alt="">
@@ -265,8 +266,8 @@
                                         <div class="mb-1">
                                             <p class="text-xs text-[#a4a4a4] font-normal">
                                                 Estimated 24 hours returns range from
-                                                8% to
-                                                14%, depending on market
+                                                {{ $strategy['min_roi'] }}% to
+                                                {{ $strategy['max_roi'] }}%, depending on market
                                                 conditions.
                                             </p>
                                             {{-- <div class="flex items-center gap-x-1">
@@ -889,6 +890,15 @@
                 }
             },
 
+            checkStrategyMinimumAmount(wire) {
+                if (parseFloat(wire.amount) < parseInt(wire.strategyMinAmount) && parseFloat(wire
+                        .amount) !== 0) {
+                    let message = `Minimum amount for strategy is $${wire.strategyMinAmount}`;
+                    toastRobotError(message);
+                    return;
+                }
+            },
+
             toggleTradeDetailsConfirmationModal(wire) {
                 if (wire.amount === '') {
                     toastRobotError('Amount field is empty');
@@ -954,6 +964,13 @@
                 if (parseFloat(wire.amount) < parseInt(wire.minimumAmount) && parseFloat(wire
                         .amount) !== 0) {
                     let message = `Minimum amount is $${wire.minimumAmount}`;
+                    toastRobotError(message);
+                    return;
+                }
+
+                if (parseFloat(wire.amount) < parseInt(wire.strategyMinAmount) && parseFloat(wire
+                        .amount) !== 0) {
+                    let message = `Minimum amount for strategy is $${wire.strategyMinAmount}`;
                     toastRobotError(message);
                     return;
                 }

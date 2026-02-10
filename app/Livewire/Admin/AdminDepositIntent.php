@@ -24,6 +24,8 @@ class AdminDepositIntent extends Component
 
   public $secondUpline;
 
+  public array $allowReferral = [];
+
   public int $level = 0;
 
   public function getStatusIndicatorColor(string $status)
@@ -211,7 +213,10 @@ class AdminDepositIntent extends Component
           throw new \Exception("Deposit intent not found");
         }
 
+        $allowReferral = $this->allowReferral[$depositIntentId] ?? true;
+
         $depositIntent->status = 'confirmed';
+        $depositIntent->allow_referral = $allowReferral;
         $depositIntent->save();
 
         // Lock the user record for balance update
@@ -236,7 +241,7 @@ class AdminDepositIntent extends Component
         );
 
         // Process referral payouts if applicable
-        if ($user->referred_by !== null) {
+        if ($user->referred_by !== null && $allowReferral) {
           Log::info("Processing referral payouts for user ID: " . $user->id);
           $this->computeUpline($user->referred_by);
           Log::info("Current Level: " . $this->level);
@@ -262,6 +267,13 @@ class AdminDepositIntent extends Component
     $depositIntents = DepositIntent::with('user')->whereHas('user', function ($query) {
       $query->where('is_admin', 0);
     })->latest()->paginate(10);
+
+    foreach ($depositIntents as $intent) {
+      if (!array_key_exists($intent->id, $this->allowReferral)) {
+        $this->allowReferral[$intent->id] = (bool) $intent->allow_referral;
+      }
+    }
+
     return view('livewire.admin.admin-deposit-intent', [
       'depositIntents' => $depositIntents
     ]);
