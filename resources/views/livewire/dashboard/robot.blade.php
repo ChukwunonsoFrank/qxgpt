@@ -243,7 +243,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="input-label" class="block text-sm font-medium mb-2 text-zinc-300">Trading
+                    <label for="input-label" class="block text-sm font-medium mb-2 text-zinc-300">Select
                         Strategy</label>
                     <div class="grid space-y-2">
                         @foreach ($this->strategies as $strategy)

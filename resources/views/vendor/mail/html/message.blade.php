@@ -21,11 +21,11 @@
 {{-- Footer --}}
 <x-slot:footer>
 <x-mail::footer>
-{{ __('Qxgpt is a trademark of Qxgpt Inc with the registered address at') }} <a href="" target="_blank" rel="noopener noreferrer">127 Boulevard De La Pétrusse, L-2320, Luxembourg.</a>
+{{ __('Qxgpt is a trademark of Qxgpt Inc with the registered address at') }} <a href="" target="_blank" rel="noopener noreferrer">127, Grinzinger Street, 1130 Vienna, Austria.</a>
 <br><br>
 © {{ date('Y') }} {{ config('app.name') }} Inc. {{ __('All rights reserved.') }}
 <br><br>
-<a href="https://qxgpt.com" target="_blank" rel="noopener noreferrer">www.qxgpt.com</a> | <a href="mailto:info@qxgpt.com"info@qxgpt.com</a>
+<a href="https://qxgpt.com" target="_blank" rel="noopener noreferrer">www.qxgpt.com</a> | <a href="mailto:info@qxgpt.com">info@qxgpt.com></a>
 </x-mail::footer>
 </x-slot:footer>
 </x-mail::layout>

@@ -1,153 +1,77 @@
-<div x-data>
-    <section style="padding-top: 0 !important;"
-        class="elementor-section elementor-top-section elementor-element elementor-element-a126101 tl-section-padding  elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-        data-id="a126101" data-element_type="section" id="contact"
-        data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-        <div class="px-3 md:px-48 lg:px-[32rem]">
-            <div class="mb-6">
-                <div class="elementor-widget-wrap elementor-element-populated" style="padding-top: 8rem;">
-                    <div class="elementor-element elementor-element-f3b0803 elementor-widget elementor-widget-heading"
-                        data-id="f3b0803" data-element_type="widget" data-widget_type="heading.default"
-                        style="margin-bottom: 1rem !important;">
-                        <div class="elementor-widget-container" style="text-align: center;">
-                            <a>
-                                <img class="w-32 text-center inline"
-                                    src="{{ asset('wp-content/uploads/2023/05/qxgpt-logo.png') }}" alt="Logo" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-element-f3b0803 elementor-widget elementor-widget-heading"
-                        data-id="f3b0803" data-element_type="widget" data-widget_type="heading.default">
-                        <div class="elementor-widget-container" style="text-align: center;">
-                            <h5 class="elementor-heading-title elementor-size-default"
-                                style="margin-bottom: 0 !important; margin-top: 0 !important; font-weight: 500;">Create
-                                account
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="elementor-widget-wrap elementor-element-populated">
-                    <div class="elementor-element elementor-element-fb8ad16 elementor-widget elementor-widget-html">
-                        <div class="elementor-widget-container">
-                            <!-- Session status -->
-                            <x-auth-session-status class="text-center" :status="session('status')" />
+<div x-data="{ signupError: null }">
+    <section class="single-page bg-dark text-white py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 col-12 mx-auto">
+                    <div class="w-full h-full px-2">
+                        <div class="flex justify-center w-full h-screen rounded items-center">
+                            <div class="container-md bg-custom text-white py-5 px-4 rounded-4 shadow">
+                                <h3 class="text-center fw-bold text-light" id="page-title">
+                                    Register
+                                </h3>
 
-                            <form wire:submit="register" class="flex flex-col gap-y-4 mt-2">
-                                <!-- Name -->
-                                <input wire:model="name" type="text"
-                                    class="py-6 h-14 px-4 block w-full border font-medium text-gray-600 border-gray-200 rounded-sm text-sm disabled:opacity-50 disabled:pointer-events-none"
-                                    style="background-color: #161616;" autocomplete="name" required
-                                    placeholder="Full Name">
+                                <div class="mt-4" x-show="signupError" x-cloak>
+                                    <div class="alert alert-danger" role="alert" x-text="signupError"></div>
+                                </div>
 
-                                <!-- Email Address -->
-                                <input wire:model="email" type="email"
-                                    class="py-6 h-14 px-4 block w-full border font-medium text-gray-600 border-gray-200 rounded-sm text-sm disabled:opacity-50 disabled:pointer-events-none"
-                                    style="background-color: #161616;" autocomplete="email" required
-                                    placeholder="Email">
+                                <form wire:submit="register" id="registerForm">
+                                    <div class="row gy-2 mt-3 text-white">
+                                        <div class="col-12 mb-3">
+                                            <div class="form-floating">
+                                                <input wire:model="name" type="text" id="name"
+                                                    class="form-control" required placeholder="Full Name" autofocus>
+                                                <label for="name" class="text-dark">Full Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <div class="form-floating">
+                                                <input wire:model="email" type="email" id="email"
+                                                    class="form-control" required placeholder="Email">
+                                                <label for="email" class="text-dark">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <div class="form-floating">
+                                                <input wire:model="password"
+                                                    x-bind:type="$store.registerPage.isPasswordVisible ? 'text' : 'password'"
+                                                    id="password1" class="form-control" placeholder="Password" required>
+                                                <label for="password1" class="text-dark">Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <div class="form-floating">
+                                                <input wire:model="password_confirmation"
+                                                    x-bind:type="$store.registerPage.isConfirmPasswordVisible ? 'text' : 'password'"
+                                                    id="password2" class="form-control" placeholder="Confirm Password"
+                                                    required>
+                                                <label for="password2" class="text-dark">Confirm Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <div class="form-floating">
+                                                <input wire:model="ref_code" type="text" id="ref_code"
+                                                    class="form-control" placeholder="Referral Code (optional)">
+                                                <label for="ref_code" class="text-dark">Referral Code
+                                                    (optional)</label>
+                                            </div>
+                                        </div>
 
-                                <!-- Password -->
-                                <div class="w-full space-y-3">
-                                    <div>
-                                        <div class="relative">
-                                            <input wire:model="password"
-                                                x-bind:type="$store.registerPage.isPasswordVisible ? 'text' : 'password'"
-                                                id="hs-trailing-icon" name="hs-trailing-icon"
-                                                class="py-6 h-14 px-4 block w-full border font-medium text-gray-600 border-gray-200 rounded-sm text-sm disabled:opacity-50 disabled:pointer-events-none"
-                                                style="background-color: #161616;" autocomplete="new-password"
-                                                placeholder="Password">
-                                            <div x-on:click="$store.registerPage.togglePassword()"
-                                                class="absolute inset-y-0 end-0 flex items-center z-20 pe-4">
-                                                <template x-if="!$store.registerPage.isPasswordVisible">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-eye-closed-icon lucide-eye-closed">
-                                                        <path d="m15 18-.722-3.25" />
-                                                        <path d="M2 8a10.645 10.645 0 0 0 20 0" />
-                                                        <path d="m20 15-1.726-2.05" />
-                                                        <path d="m4 15 1.726-2.05" />
-                                                        <path d="m9 18 .722-3.25" />
-                                                    </svg>
-                                                </template>
-                                                <template x-if="$store.registerPage.isPasswordVisible">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-eye-icon lucide-eye">
-                                                        <path
-                                                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
-                                                        <circle cx="12" cy="12" r="3" />
-                                                    </svg>
-                                                </template>
+                                        <div class="col-12 py-3">
+                                            <button type="submit" id="registerBtn"
+                                                class="btn btn-primary text-white py-3 fw-bold"
+                                                style="width: 100%;">Register</button>
+                                        </div>
+                                        <div class="d-flex justify-content-center text-light fw-semibold my-4">
+                                            <div class="text-center">
+                                                <span class="text-light" style="font-size: 13px;">Already have
+                                                    account?
+                                                    <a href="{{ route('applogin') }}"
+                                                        class="text-underline text-primary">Login</a></span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
 
-                                <!-- Confirm Password -->
-                                <div class="w-full space-y-3">
-                                    <div>
-                                        <div class="relative">
-                                            <input wire:model="password_confirmation"
-                                                x-bind:type="$store.registerPage.isConfirmPasswordVisible ? 'text' : 'password'"
-                                                id="hs-trailing-icon-confirm" name="hs-trailing-icon"
-                                                class="py-6 h-14 px-4 block w-full border font-medium text-gray-600 border-gray-200 rounded-sm text-sm disabled:opacity-50 disabled:pointer-events-none"
-                                                style="background-color: #161616;" autocomplete="new-password"
-                                                placeholder="Confirm Password">
-                                            <div x-on:click="$store.registerPage.toggleConfirmPassword()"
-                                                class="absolute inset-y-0 end-0 flex items-center z-20 pe-4">
-                                                <template x-if="!$store.registerPage.isConfirmPasswordVisible">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-eye-closed-icon lucide-eye-closed">
-                                                        <path d="m15 18-.722-3.25" />
-                                                        <path d="M2 8a10.645 10.645 0 0 0 20 0" />
-                                                        <path d="m20 15-1.726-2.05" />
-                                                        <path d="m4 15 1.726-2.05" />
-                                                        <path d="m9 18 .722-3.25" />
-                                                    </svg>
-                                                </template>
-                                                <template x-if="$store.registerPage.isConfirmPasswordVisible">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-eye-icon lucide-eye">
-                                                        <path
-                                                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
-                                                        <circle cx="12" cy="12" r="3" />
-                                                    </svg>
-                                                </template>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Referral Code -->
-                                <input wire:model="ref_code" type="text"
-                                    class="py-6 h-14 px-4 block w-full border font-medium text-gray-600 border-gray-200 rounded-sm text-sm disabled:opacity-50 disabled:pointer-events-none"
-                                    style="background-color: #161616;" autocomplete="ref_code"
-                                    placeholder="Referral Code (optional)">
-
-                                <div class="w-full">
-                                    <flux:button variant="primary" type="submit"
-                                        class="w-full! h-12! mt-4! rounded-md! p-2! bg-accent! text-black!">
-                                        {{ __('Create Account') }}</flux:button>
-                                </div>
-                            </form>
-
-                            <div
-                                class="space-x-1 rtl:space-x-reverse mt-4 text-center text-sm text-zinc-500 font-medium mb-3">
-                                {{ __('Already have an account?') }}
-                                <flux:link :href="route('applogin')" class="text-accent">{{ __('Log in') }}
-                                </flux:link>
-                                {{ __('now') }}
                             </div>
                         </div>
                     </div>
@@ -158,33 +82,8 @@
 </div>
 
 <script>
-    let lastToast = null;
-
-    function toast(message) {
-        if (lastToast) {
-            lastToast.hideToast();
-        }
-
-        const copiedToastMarkup = `
-            <div class="flex items-center p-4">
-                <div class="shrink-0">
-                    <svg class="shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-alert-icon lucide-shield-alert"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-                </div>
-                <div class="ms-3 flex-1">
-                    <p class="text-xs font-semibold text-white" style="margin-bottom: 0 !important;">${message}</p>
-                </div>
-            </div>
-        `;
-
-        lastToast = Toastify({
-            text: copiedToastMarkup,
-            className: "hs-toastify-on:opacity-100 opacity-0 absolute top-0 start-1/2 -translate-x-1/2 z-90 w-4/5 md:w-1/2 lg:w-1/4 transition-all duration-300 bg-dim border border-[#26252a] text-sm text-white rounded-xl shadow-lg [&>.toast-close]:hidden",
-            duration: 4000,
-            close: false,
-            escapeMarkup: false
-        });
-
-        lastToast.showToast();
+    function onRecaptchaSuccess(token) {
+        @this.set('gRecaptchaResponse', token);
     }
 
     document.addEventListener('alpine:init', () => {
@@ -207,7 +106,7 @@
 @script
     <script>
         $wire.on('signup-error', (event) => {
-            toast(event.message)
+            Alpine.$data($wire.el).signupError = event.message;
         });
     </script>
 @endscript
