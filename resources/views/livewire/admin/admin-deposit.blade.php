@@ -1,4 +1,4 @@
-<!-- ===== Content Area Start ===== -->
+<!-- ===== Content Area Start ==== -->
 <div x-data class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
     <!-- Small Device Overlay Start -->
     <div :class="sidebarToggle ? 'block lg:hidden' : 'hidden'" class="fixed z-9 h-screen w-full bg-gray-900/50">
