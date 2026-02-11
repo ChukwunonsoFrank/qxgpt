@@ -1,10 +1,14 @@
 <div x-data="{ loginError: null }">
     <section class="single-page bg-dark text-white">
+        <div class="text-center pt-5 pb-5">
+            <img src="{{ asset('homeassets/img/qxgpt.svg') }}" alt="Logo" width="70"
+                class="d-inline-block align-text-top">
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-12 mx-auto">
                     <div class="w-full h-full px-2">
-                        <div class="flex justify-center w-full h-screen rounded items-center">
+                        <div class="flex justify-center w-full h-screen rounded items-start">
                             <div class="container-md bg-custom text-white py-5 rounded-4 shadow">
                                 <h3 class="text-center fw-bold text-light" id="page-title">
                                     Login

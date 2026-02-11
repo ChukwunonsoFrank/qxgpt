@@ -325,7 +325,7 @@
     <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
     @yield('footer')
 
-    <script src="//code.jivosite.com/widget/16gjtRWVEp" async></script>
+    <script src="//code.jivosite.com/widget/uWS65Q6Tcf" async></script>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
