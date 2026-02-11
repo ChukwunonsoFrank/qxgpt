@@ -167,11 +167,11 @@
                     <h5 style="font-size: 13px;">Get the app</h5>
                     <div class="d-flex flex-row gap-3 justify-content-start py-1">
                         <a class="btn btn-outline-light bg-black btn-lg text-white fw-bold d-flex flex-column justify-content-center"
-                            href="/Qxgptapp.apk">
+                            href="/qxgpt.apk">
                             <img src="{{ asset('homeassets/img/google.svg') }}" width="100%" alt="">
                         </a>
                         <a class="btn btn-outline-light bg-black btn-lg text-white fw-bold d-flex flex-column justify-content-center"
-                            href="#">
+                            href="{{ route('home') }}">
                             <img src="{{ asset('homeassets/img/apple.svg') }}" width="100%" alt="">
                         </a>
                     </div>
