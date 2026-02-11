@@ -1,5 +1,5 @@
 <div x-data="{ signupError: null, codeResent: null }">
-    <section class="single-page bg-dark text-white py-5">
+    <section class="single-page bg-dark text-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-12 mx-auto">

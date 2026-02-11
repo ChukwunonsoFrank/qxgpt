@@ -17,7 +17,7 @@ use App\Notifications\ReferralLinkApplied;
 use App\Notifications\RegistrationCompleted;
 use Illuminate\Support\Facades\Notification;
 
-#[Layout("components.layouts.auth.layout")]
+#[Layout("components.layouts.auth.applayout")]
 #[Title("App Register")]
 class AppRegisterVerifyLoginCode extends Component
 {

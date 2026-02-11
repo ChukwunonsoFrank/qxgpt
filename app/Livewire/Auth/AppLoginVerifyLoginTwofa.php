@@ -14,7 +14,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use PragmaRX\Google2FA\Google2FA;
 
-#[Layout("components.layouts.auth.layout")]
+#[Layout("components.layouts.auth.applayout")]
 #[Title("Login")]
 class AppLoginVerifyLoginTwofa extends Component
 {
