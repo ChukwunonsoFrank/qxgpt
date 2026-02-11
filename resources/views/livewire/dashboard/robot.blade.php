@@ -268,7 +268,7 @@
                                                 Estimated 24 hours returns range from
                                                 {{ $strategy['min_roi'] }}% to
                                                 {{ $strategy['max_roi'] }}%, depending on market
-                                                conditions. Minimum Amount: ${{ $strategy['min_amount'] }}
+                                                conditions. Minimum Amount: ${{ number_format($strategy['min_amount']) }}
                                             </p>
                                             {{-- <div class="flex items-center gap-x-1">
                                                 <div>
