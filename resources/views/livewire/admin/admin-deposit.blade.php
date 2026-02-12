@@ -100,13 +100,13 @@
                                     </th>
                                     <th class="px-5 py-3 font-normal whitespace-nowrap sm:px-6">
                                         <div class="flex items-center">
-                                            <p class="text-theme-sm text-gray-500 dark:text-gray-400">Approve Referral
-                                            </p>
+                                            <p class="text-theme-sm text-gray-500 dark:text-gray-400">Status</p>
                                         </div>
                                     </th>
                                     <th class="px-5 py-3 font-normal whitespace-nowrap sm:px-6">
                                         <div class="flex items-center">
-                                            <p class="text-theme-sm text-gray-500 dark:text-gray-400">Status</p>
+                                            <p class="text-theme-sm text-gray-500 dark:text-gray-400">Approve Referral
+                                            </p>
                                         </div>
                                     </th>
                                 </thead>
@@ -137,17 +137,17 @@
                                             </td>
                                             <td class="px-5 py-3 whitespace-nowrap sm:px-6">
                                                 <div class="flex items-center">
-                                                    <input type="checkbox"
-                                                        wire:model="allowReferral.{{ $deposit['id'] }}"
-                                                        class="rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700" />
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-3 whitespace-nowrap sm:px-6">
-                                                <div class="flex items-center">
                                                     <p
                                                         class="text-theme-xs {{ $this->getStatusIndicatorColor($deposit['status']) }} rounded-full px-2 py-0.5 font-medium">
                                                         {{ ucfirst($deposit['status']) }}
                                                     </p>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-3 whitespace-nowrap sm:px-6">
+                                                <div class="flex items-center">
+                                                    <input type="checkbox"
+                                                        wire:model="allowReferral.{{ $deposit['id'] }}"
+                                                        class="rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700" />
                                                 </div>
                                             </td>
                                             <td class="px-5 py-3 whitespace-nowrap sm:px-6">

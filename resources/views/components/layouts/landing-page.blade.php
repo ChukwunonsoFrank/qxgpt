@@ -55,7 +55,7 @@
                         class="d-inline-block align-text-top">
                     <h3 class="text-white fs-5 pb-0 mb-0 px-1 d-none d-sm-none d-lg-block"
                         style="letter-spacing: 1px!important;"><b>Qxgpt</b> <span class="text-success"
-                            style="color:#40ffdd!important;"><b>BOT</b></span></h3>
+                            style="color:#3b71ff!important;"><b>BOT</b></span></h3>
 
                 </a>
 
@@ -119,7 +119,7 @@
                             class="d-inline-block align-text-top">
                         <h3 class="text-white fs-5 pb-0 mb-0 px-1 d-none d-sm-none d-lg-block"
                             style="letter-spacing: 1px!important;"><b>Qxgpt</b> <span class="text-success"
-                                style="color:#40ffdd!important;"><b>BOT</b></span></h3>
+                                style="color:#3b71ff!important;"><b>BOT</b></span></h3>
 
                     </a>
                     <p class="py-3" style="font-size: 12px;">Qxgpt bot is suitable for both newbie traders and
