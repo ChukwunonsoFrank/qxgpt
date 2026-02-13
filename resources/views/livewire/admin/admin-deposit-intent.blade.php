@@ -109,6 +109,9 @@
                                         </div>
                                     </th>
                                     <th class="px-5 py-3 font-normal whitespace-nowrap sm:px-6">
+
+                                    </th>
+                                    <th class="px-5 py-3 font-normal whitespace-nowrap sm:px-6">
                                         <div class="flex items-center">
                                             <p class="text-theme-sm text-gray-500 dark:text-gray-400">Approve Referral
                                             </p>
@@ -159,13 +162,6 @@
                                                 </div>
                                             </td>
                                             <td class="px-5 py-3 whitespace-nowrap sm:px-6">
-                                                <div class="flex items-center">
-                                                    <input type="checkbox"
-                                                        wire:model="allowReferral.{{ $depositIntent['id'] }}"
-                                                        class="rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700" />
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-3 whitespace-nowrap sm:px-6">
                                                 <div class="flex items-center justify-center">
                                                     <div class="relative">
                                                         <button
@@ -192,6 +188,13 @@
                                                             </form>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-3 whitespace-nowrap sm:px-6">
+                                                <div class="flex items-center justify-center">
+                                                    <input type="checkbox"
+                                                        wire:model="allowReferral.{{ $depositIntent['id'] }}"
+                                                        class="rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700" />
                                                 </div>
                                             </td>
                                         </tr>
