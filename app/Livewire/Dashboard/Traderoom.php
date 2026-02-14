@@ -205,16 +205,10 @@ class Traderoom extends Component
     $this->botOneStrategy = $botOneStrategy["name"];
 
     $user = auth()->user();
-    $exceedPercentages = [11, 12, 13];
-    $dailyPercentages = [8, 9, 10];
 
-    if ($user->profit_exceed_day > 0 && $this->botOneAccountType === 'Live account') {
-      $this->botOneMinProfitLimit = min($exceedPercentages);
-      $this->botOneMaxProfitLimit = max($exceedPercentages);
-    } else {
-      $this->botOneMinProfitLimit = min($dailyPercentages);
-      $this->botOneMaxProfitLimit = max($dailyPercentages);
-    }
+
+    $this->botOneMinProfitLimit = $botOneStrategy["min_roi"];
+    $this->botOneMaxProfitLimit = $botOneStrategy["max_roi"];
     $this->botOneProfit = $this->activeBotOne["profit"];
     $this->botOneFee = $this->calculateFees($this->activeBotOne["profit"]);
     $this->botOneAsset = $this->activeBotOne["asset"];
