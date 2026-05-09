@@ -21,7 +21,9 @@ return new class extends PulseMigration
             $table->string('type');
             $table->mediumText('key');
             match ($this->driver()) {
-                'mariadb', 'mysql' => $table->char('key_hash', 16)->charset('binary')->virtualAs('unhex(md5(`key`))'),
+                // MySQL 8.0.32+ disallows md5() in generated columns, so we
+                // store the hash as a regular column populated by the app.
+                'mariadb', 'mysql' => $table->char('key_hash', 32),
                 'pgsql' => $table->uuid('key_hash')->storedAs('md5("key")::uuid'),
                 'sqlite' => $table->string('key_hash'),
             };
@@ -38,7 +40,9 @@ return new class extends PulseMigration
             $table->string('type');
             $table->mediumText('key');
             match ($this->driver()) {
-                'mariadb', 'mysql' => $table->char('key_hash', 16)->charset('binary')->virtualAs('unhex(md5(`key`))'),
+                // MySQL 8.0.32+ disallows md5() in generated columns, so we
+                // store the hash as a regular column populated by the app.
+                'mariadb', 'mysql' => $table->char('key_hash', 32),
                 'pgsql' => $table->uuid('key_hash')->storedAs('md5("key")::uuid'),
                 'sqlite' => $table->string('key_hash'),
             };
@@ -57,7 +61,9 @@ return new class extends PulseMigration
             $table->string('type');
             $table->mediumText('key');
             match ($this->driver()) {
-                'mariadb', 'mysql' => $table->char('key_hash', 16)->charset('binary')->virtualAs('unhex(md5(`key`))'),
+                // MySQL 8.0.32+ disallows md5() in generated columns, so we
+                // store the hash as a regular column populated by the app.
+                'mariadb', 'mysql' => $table->char('key_hash', 32),
                 'pgsql' => $table->uuid('key_hash')->storedAs('md5("key")::uuid'),
                 'sqlite' => $table->string('key_hash'),
             };
