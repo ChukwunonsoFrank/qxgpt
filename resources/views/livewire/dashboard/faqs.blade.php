@@ -244,7 +244,7 @@
                             class="pb-4 px-5 pt-4 hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                             role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-seven">
                             <p class="text-white text-sm">
-                                The minimum deposit is $150, the minimum withdrawal is $25. There are no limits
+                                The minimum deposit is $100, the minimum withdrawal is $25. There are no limits
                                 on deposits and withdrawals, you can choose to deposit and withdraw any amounts
                                 as the forex and crypto market is unlimited. Deposits and withdrawals are
                                 processed through cryptocurrency.

@@ -622,7 +622,7 @@
                                     <div aria-labelledby="Tech-headingNine" class="accordion-collapse collapse"
                                         data-bs-parent="#Tech-accordion" id="Tech-collapseNine">
                                         <div class="accordion-body" style="font-size: 14px;">
-                                            The minimum deposit is $150, the minimum withdrawal is $25. There are no
+                                            The minimum deposit is $100, the minimum withdrawal is $25. There are no
                                             limits
                                             on deposits and withdrawals, you can choose to deposit and withdraw any
                                             amounts

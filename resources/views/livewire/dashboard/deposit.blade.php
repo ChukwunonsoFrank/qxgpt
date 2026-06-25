@@ -18,7 +18,7 @@
                             <p class="text-white text-sm font-semibold">$</p>
                         </div>
                     </div>
-                    <p class="text-[10px] text-zinc-500 font-medium mt-1 ml-1">Minimum deposit is $150</p>
+                    <p class="text-[10px] text-zinc-500 font-medium mt-1 ml-1">Minimum deposit is $100</p>
                 </div>
 
                 <div x-cloak x-show="$store.depositPage.isPaymentMethodSelectVisible" class="mb-5">
