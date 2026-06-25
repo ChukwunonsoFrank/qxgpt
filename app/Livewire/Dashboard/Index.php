@@ -18,8 +18,6 @@ class Index extends Component
   {
     $justLoggedIn = Session::pull("just_logged_in", false);
 
-    $justRegistered = Session::pull("just_registered", false);
-
     $activeBots = Bot::where("user_id", "=", auth()->user()->id, "and")
       ->where("status", "=", "active", "and")
       ->get();
@@ -44,11 +42,6 @@ class Index extends Component
       $this->redirectRoute("dashboard.robot");
     }
 
-    if ($justRegistered) {
-      $this->dispatch("track-complete-registration");
-
-      $this->redirectRoute("dashboard.robot");
-    }
   }
 
   public function render()

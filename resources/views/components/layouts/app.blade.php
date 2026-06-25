@@ -69,6 +69,16 @@
     src="https://www.facebook.com/tr?id=1008510815209602&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+
+    @if (session()->pull('just_registered', false))
+        <script>
+            window.addEventListener('load', () => {
+                if (typeof fbq === 'function') {
+                    fbq('track', 'CompleteRegistration');
+                }
+            });
+        </script>
+    @endif
 </head>
 
 <body class="bg-dashboard font-dashboard">
