@@ -45,6 +45,8 @@ class Index extends Component
     }
 
     if ($justRegistered) {
+      $this->dispatch("track-complete-registration");
+
       $this->redirectRoute("dashboard.robot");
     }
   }
