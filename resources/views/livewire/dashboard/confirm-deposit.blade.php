@@ -1,4 +1,6 @@
-<div x-data="{ uploadError: false }" class="px-4 lg:px-0 h-full">
+<div x-data="confirmDepositPage({
+    address: @js($this->address),
+})" class="px-4 lg:px-0 h-full">
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
         <div class="lg:h-full lg:flex-1 lg:px-96 lg:pt-6">
@@ -50,8 +52,7 @@
                                 <p class="text-white font-light break-words whitespace-normal"
                                     style="word-break: break-all;">{{ $this->address }}</p>
                             </div>
-                            <div wire:click="storeDepositIntent()"
-                                x-on:click="$store.confirmDepositPage.copyWalletAddress($wire)"
+                            <div x-on:click="handleCopyAction()"
                                 class="flex-none flex items-center gap-x-1.5 cursor-pointer">
                                 <span class="text-sm text-white font-light">Copy</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -66,8 +67,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <a wire:click="storeDepositIntent()"
-                            x-on:click="$store.confirmDepositPage.toggleQRModal($wire);">
+                        <a x-on:click.prevent="handleQRAction()">
                             <div class="w-full py-3 rounded-full flex items-center justify-center bg-dashboard gap-x-2">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -165,7 +165,7 @@
                         </div>
                     </div>
 
-                    <div x-cloak x-transition x-show="$store.confirmDepositPage.isQRModalOpen"
+                    <div x-cloak x-transition x-show="isQRModalOpen"
                         class="fixed top-0 left-0 h-svh w-full px-4 lg:px-96 pt-6 z-20">
                         <div class="absolute inset-0 h-svh w-full px-4 lg:px-96 pt-6 z-20 bg-dashboard opacity-85">
                         </div>
@@ -181,7 +181,7 @@
                                         </div>
                                         <div class="flex-none">
                                             <div class="size-4 flex justify-center items-center cursor-pointer"
-                                                x-on:click="$store.confirmDepositPage.toggleQRModal($wire)">
+                                                x-on:click="closeQRModal()">
                                                 <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
                                                     width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
@@ -220,8 +220,7 @@
                                                 <p class="text-white font-light break-words whitespace-normal"
                                                     style="word-break: break-all;">{{ $this->address }}</p>
                                             </div>
-                                            <div wire:click="storeDepositIntent()"
-                                                x-on:click="$store.confirmDepositPage.copyWalletAddress($wire)"
+                                            <div x-on:click="handleCopyAction()"
                                                 class="flex-none flex items-center gap-x-1.5 cursor-pointer">
                                                 <span class="text-sm text-white font-light">Copy</span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -240,7 +239,7 @@
                         </div>
                     </div>
 
-                    <div x-cloak x-transition x-show="$store.confirmDepositPage.isClickOnPaidModalCopyOpen"
+                    <div x-cloak x-transition x-show="isClickOnPaidModalCopyOpen"
                         class="fixed top-0 left-0 h-svh w-full px-4 lg:px-96 pt-6 z-20">
                         <div class="absolute inset-0 h-svh w-full px-4 lg:px-96 pt-6 z-20 bg-dashboard opacity-85">
                         </div>
@@ -281,7 +280,7 @@
                                     </div>
                                     <div>
                                         <button type="button"
-                                            x-on:click="$store.confirmDepositPage.toggleClickOnPaidModal();"
+                                            x-on:click="closeCopyStepsModal()"
                                             type="button"
                                             class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             Okay
@@ -292,7 +291,7 @@
                         </div>
                     </div>
 
-                    <div x-cloak x-transition x-show="$store.confirmDepositPage.isClickOnPaidModalQROpen"
+                    <div x-cloak x-transition x-show="isClickOnPaidModalQROpen"
                         class="fixed top-0 left-0 h-svh w-full px-4 lg:px-96 pt-6 z-20">
                         <div class="absolute inset-0 h-svh w-full px-4 lg:px-96 pt-6 z-20 bg-dashboard opacity-85">
                         </div>
@@ -333,7 +332,7 @@
                                     </div>
                                     <div>
                                         <button type="button"
-                                            x-on:click="$store.confirmDepositPage.isClickOnPaidModalQROpen = false; $store.confirmDepositPage.isClickOnPaidViewedOnce = true; $store.confirmDepositPage.isQRModalOpen = !$store.confirmDepositPage.isQRModalOpen;"
+                                            x-on:click="openQRModal()"
                                             type="button"
                                             class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             Okay
@@ -344,7 +343,7 @@
                         </div>
                     </div>
 
-                    <div x-cloak x-transition x-show="$store.confirmDepositPage.isDepositStepsModalOpen"
+                    <div x-cloak x-transition x-show="isDepositStepsModalOpen"
                         class="fixed top-0 left-0 h-svh w-full px-4 lg:px-96 pt-6 z-20">
                         <div class="absolute inset-0 h-svh w-full px-4 lg:px-96 pt-6 z-20 bg-dashboard opacity-85">
                         </div>
@@ -385,7 +384,7 @@
                                     </div>
                                     <div>
                                         <button type="button"
-                                            x-on:click="$store.confirmDepositPage.isDepositStepsModalOpen = false;"
+                                            x-on:click="closeInitialStepsModal()"
                                             type="button"
                                             class="py-2 px-5 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                             Okay
@@ -484,57 +483,79 @@
         lastToast.showToast();
     }
 
-    document.addEventListener('alpine:init', () => {
-        Alpine.store('confirmDepositPage', {
+    function confirmDepositPage(config) {
+        return {
+            uploadError: false,
+            address: config.address,
             isQRModalOpen: false,
             isDepositStepsModalOpen: true,
             isClickOnPaidModalCopyOpen: false,
             isClickOnPaidModalQROpen: false,
-            isClickOnPaidViewedOnce: false,
             init() {
-                this.generateQRCode()
+                this.generateQRCode();
             },
             generateQRCode() {
-                var qrcode = new QRCode("qrcode");
-                var address = new URLSearchParams(window.location.search).get('address');
-                qrcode.makeCode(address);
+                const qrcode = new QRCode('qrcode');
+                qrcode.makeCode(this.address);
             },
-            toggleClickOnPaidModal() {
-                this.isClickOnPaidModalCopyOpen = !this.isClickOnPaidModalCopyOpen;
+            recordDepositIntent() {
+                queueMicrotask(() => {
+                    this.$wire.storeDepositIntent();
+                });
             },
-            copyWalletAddress(wire) {
-                var copyText = document.getElementById("address");
-                copyText.select();
-                copyText.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(copyText.value);
+            handleCopyAction() {
+                if (!this.isQRModalOpen) {
+                    this.isClickOnPaidModalCopyOpen = true;
+                }
+
+                this.recordDepositIntent();
+                this.copyWalletAddress();
+            },
+            copyWalletAddress() {
+                if (!this.address) {
+                    return;
+                }
+
+                if (navigator.clipboard?.writeText) {
+                    navigator.clipboard.writeText(this.address).catch(() => {
+                        this.copyWalletAddressFallback();
+                    });
+                } else {
+                    this.copyWalletAddressFallback();
+                }
+
                 toast('info', 'Copied');
-                if (wire.hasUserMadeTwoSuccessfulDeposits) {
-                    return;
-                }
-                setTimeout(() => {
-                    if (this.isClickOnPaidViewedOnce) {
-                        return;
-                    }
-                    // Only show the modal if QR modal is not open
-                    if (!this.isQRModalOpen) {
-                        this.isClickOnPaidModalCopyOpen = true;
-                    }
-                    this.isClickOnPaidViewedOnce = true;
-                }, 1000);
             },
-            toggleQRModal(wire) {
-                if (wire.hasUserMadeTwoSuccessfulDeposits) {
-                    this.isQRModalOpen = !this.isQRModalOpen;
-                    return;
-                }
-                if (this.isClickOnPaidViewedOnce) {
-                    this.isQRModalOpen = !this.isQRModalOpen;
-                    return;
-                }
+            copyWalletAddressFallback() {
+                const textArea = document.createElement('textarea');
+                textArea.value = this.address;
+                textArea.setAttribute('readonly', '');
+                textArea.style.position = 'absolute';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            },
+            handleQRAction() {
                 this.isClickOnPaidModalQROpen = true;
+                this.recordDepositIntent();
             },
-        })
-    })
+            closeInitialStepsModal() {
+                this.isDepositStepsModalOpen = false;
+            },
+            closeCopyStepsModal() {
+                this.isClickOnPaidModalCopyOpen = false;
+            },
+            openQRModal() {
+                this.isClickOnPaidModalQROpen = false;
+                this.isQRModalOpen = true;
+            },
+            closeQRModal() {
+                this.isQRModalOpen = false;
+            },
+        };
+    }
 </script>
 
 @script

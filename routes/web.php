@@ -21,6 +21,7 @@ use App\Livewire\Admin\AdminDeposit;
 use App\Livewire\Admin\AdminDepositDetails;
 use App\Livewire\Admin\AdminDepositIntent;
 use App\Livewire\Admin\UsersDetails;
+use App\Livewire\Dashboard\AccountManager;
 use App\Livewire\Dashboard\Withdraw;
 use App\Livewire\Admin\AdminStrategy;
 use App\Livewire\Dashboard\Traderoom;
@@ -197,6 +198,9 @@ Route::middleware(["auth", "user", "banned"])->group(function () {
   Route::get("/dashboard/faqs", Faqs::class)
     ->middleware(["auth", "verified"])
     ->name("dashboard.faqs");
+  Route::get("/dashboard/accountmanager", AccountManager::class)
+    ->middleware(["auth", "verified"])
+    ->name("dashboard.accountmanager");
 
   Route::redirect("settings", "settings/profile");
   Route::get("settings/profile", Profile::class)->name("settings.profile");
