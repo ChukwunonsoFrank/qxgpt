@@ -129,7 +129,7 @@
                             </div>
                         </div>
 
-                        <input id="file-upload" type="file" wire:model="id" class="hidden" />
+                        <input id="file-upload" type="file" wire:model="id" accept="image/jpeg,image/png" class="hidden" />
 
                         <div class="mt-1 text-xs text-gray-400" wire:loading.remove wire:target="id">
                             @if ($id)

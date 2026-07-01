@@ -7,43 +7,45 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-#[Layout("components.layouts.admin")]
+#[Layout('components.layouts.admin')]
 class PaymentMethods extends Component
 {
     use WithFileUploads;
 
-    public string $name = "";
+    public string $name = '';
 
-    public string $address = "";
+    public string $address = '';
 
-    public string $slug = "";
+    public string $slug = '';
 
     public $image;
+
+    protected $rules = [
+        'name' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'slug' => 'required|string|max:255',
+        'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:5120',
+    ];
 
     public function createNewPaymentMethod()
     {
         try {
+            $this->validate();
+            $imagePath = $this->image->store('payment-method-icon', 'public');
+
             PaymentMethod::create([
-                "name" => $this->name,
-                "slug" => $this->slug,
-                "address" => $this->address,
-                "icon_url" =>
-                    "payment-method-icon/" .
-                    $this->image->getClientOriginalName(),
+                'name' => $this->name,
+                'slug' => $this->slug,
+                'address' => $this->address,
+                'icon_url' => $imagePath,
             ]);
 
-            $this->image->storeAs(
-                "payment-method-icon",
-                $this->image->getClientOriginalName(),
-                "public",
-            );
-
             session()->flash(
-                "success-message",
-                "Payment method created successfully",
+                'success-message',
+                'Payment method created successfully',
             );
         } catch (\Exception $e) {
-            session()->flash("error-message", $e->getMessage());
+            session()->flash('error-message', $e->getMessage());
         }
     }
 
@@ -52,19 +54,20 @@ class PaymentMethods extends Component
         try {
             PaymentMethod::destroy($methodId);
             session()->flash(
-                "success-message",
-                "Payment method deleted successfully",
+                'success-message',
+                'Payment method deleted successfully',
             );
         } catch (\Exception $e) {
-            session()->flash("error-message", $e->getMessage());
+            session()->flash('error-message', $e->getMessage());
         }
     }
 
     public function render()
     {
         $paymentMethods = PaymentMethod::all();
-        return view("livewire.admin.payment-methods", [
-            "paymentMethods" => $paymentMethods,
+
+        return view('livewire.admin.payment-methods', [
+            'paymentMethods' => $paymentMethods,
         ]);
     }
 }

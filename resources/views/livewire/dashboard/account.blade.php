@@ -645,7 +645,7 @@
                                     </div>
                                 </div>
 
-                                <input id="file-upload" type="file" wire:model.live="profilePicture"
+                                <input id="file-upload" type="file" wire:model.live="profilePicture" accept="image/jpeg,image/png"
                                     class="hidden" />
 
                                 <div class="mt-2 text-xs text-gray-400">

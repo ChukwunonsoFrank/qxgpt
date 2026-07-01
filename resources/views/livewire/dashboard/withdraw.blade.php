@@ -179,8 +179,6 @@
                                 </div>
                                 <div class="flex-none">
                                     <img class="inline-block"
-                                        src="{{ Storage::url('payment-method-icon/an-trc20.svg') }}">
-                                    <img class="inline-block -ml-1.5"
                                         src="{{ Storage::url('payment-method-icon/an-erc20.svg') }}">
                                     <img class="inline-block -ml-1.5"
                                         src="{{ Storage::url('payment-method-icon/an-bep20.svg') }}">
@@ -224,17 +222,6 @@
                                 <div class="flex-1">
                                     <p class="text-sm">USDC</p>
                                     <p class="text-[10px] text-[#a4a4a4]">Solana (SOL)</p>
-                                </div>
-                            </div>
-                            <div wire:click="selectPaymentMethod('usdc-trc20')"
-                                @click="$store.withdrawPage.proceedToAddressStep($wire)"
-                                class="{{ $this->selectedPaymentMethodSlug === 'usdc-trc20' ? 'border-3 border-[#1E90FF]' : 'border border-[#26252a]' }} bg-dim hover:bg-[#3b3a41] cursor-pointer flex items-center space-x-2 px-4 py-4.5 mb-1.5 rounded-md text-[#FFFFFF]">
-                                <div class="flex-none">
-                                    <img src="{{ Storage::url('payment-method-icon/usdc-trc20.svg') }}">
-                                </div>
-                                <div class="flex-1">
-                                    <p class="text-sm">USDC</p>
-                                    <p class="text-[10px] text-[#a4a4a4]">Tron (TRC20)</p>
                                 </div>
                             </div>
                             <div wire:click="selectPaymentMethod('usdc-polygon')"
@@ -305,38 +292,6 @@
                             </div>
                         </div>
 
-                        <div wire:click="selectPaymentMethod('bitcoin-cash')"
-                            @click="$store.withdrawPage.proceedToAddressStep($wire)"
-                            class="{{ $this->selectedPaymentMethodSlug === 'bitcoin-cash' ? 'border-3 border-[#1E90FF]' : 'border border-[#26252a]' }} bg-dim hover:bg-[#3b3a41] cursor-pointer flex items-center space-x-2 px-4 py-7 mb-1.5 rounded-md text-[#FFFFFF]">
-                            <div class="flex-none">
-                                <img src="{{ Storage::url('payment-method-icon/bch.svg') }}">
-                            </div>
-                            <div class="flex-1">
-                                <p class="text-sm">BCH</p>
-                            </div>
-                        </div>
-
-                        <div wire:click="selectPaymentMethod('dogecoin')"
-                            @click="$store.withdrawPage.proceedToAddressStep($wire)"
-                            class="{{ $this->selectedPaymentMethodSlug === 'dogecoin' ? 'border-3 border-[#1E90FF]' : 'border border-[#26252a]' }} bg-dim hover:bg-[#3b3a41] cursor-pointer flex items-center space-x-2 px-4 py-7 mb-1.5 rounded-md text-[#FFFFFF]">
-                            <div class="flex-none">
-                                <img src="{{ Storage::url('payment-method-icon/doge.svg') }}">
-                            </div>
-                            <div class="flex-1">
-                                <p class="text-sm">Dogecoin</p>
-                            </div>
-                        </div>
-
-                        <div wire:click="selectPaymentMethod('dash')"
-                            @click="$store.withdrawPage.proceedToAddressStep($wire)"
-                            class="{{ $this->selectedPaymentMethodSlug === 'dash' ? 'border-3 border-[#1E90FF]' : 'border border-[#26252a]' }} bg-dim hover:bg-[#3b3a41] cursor-pointer flex items-center space-x-2 px-4 py-7 mb-1.5 rounded-md text-[#FFFFFF]">
-                            <div class="flex-none">
-                                <img src="{{ Storage::url('payment-method-icon/dash.svg') }}">
-                            </div>
-                            <div class="flex-1">
-                                <p class="text-sm">DASH</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

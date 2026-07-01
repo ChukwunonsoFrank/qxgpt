@@ -82,18 +82,15 @@ class ConfirmDeposit extends Component
         }
 
         try {
+            $screenshotPath = $this->screenshot->store('payment-screenshot');
+
             Deposit::create([
                 'user_id' => auth()->user()->id,
                 'payment_method' => $this->method,
                 'amount' => $this->amount,
-                'payment_screenshot_path' => 'payment-screenshot/'.$this->screenshot->getClientOriginalName(),
+                'payment_screenshot_path' => $screenshotPath,
                 'status' => 'pending',
             ]);
-
-            $this->screenshot->storeAs(
-                path: 'payment-screenshot',
-                name: $this->screenshot->getClientOriginalName(),
-            );
 
             /**
              * Send notifications to respective correspondents.

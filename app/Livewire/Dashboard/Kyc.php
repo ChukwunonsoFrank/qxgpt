@@ -291,19 +291,16 @@ class Kyc extends Component
                 return;
             }
 
+            $idImagePath = $this->id->store('kyc');
+
             ModelsKyc::create([
                 'user_id' => auth()->user()->id,
                 'fullname' => $this->fullname,
                 'dob' => $this->dob,
                 'country' => $this->selectedCountry,
-                'id_image_path' => 'kyc/'.$this->id->getClientOriginalName(),
+                'id_image_path' => $idImagePath,
                 'status' => 'pending',
             ]);
-
-            $this->id->storeAs(
-                path: 'kyc',
-                name: $this->id->getClientOriginalName(),
-            );
 
             $this->dispatch('success-message')->self();
 

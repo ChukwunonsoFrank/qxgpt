@@ -178,6 +178,10 @@ http {
             error_page 404 /index.php;
         ) else ()
 
+        location ~ ^/storage/.*\.php$ {
+            return 404;
+        }
+
         location ~ \.php$ {
             fastcgi_pass 127.0.0.1:9000;
             fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;

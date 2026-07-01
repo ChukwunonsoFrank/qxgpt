@@ -9,6 +9,22 @@
     <main>
         <livewire:admin.partials.header :key="'header-' . now()" />
         <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
+            @if (session()->has('success-message'))
+                <div class="mb-4 rounded-xl border border-success-500 bg-success-50 p-4 dark:border-success-500/30 dark:bg-success-500/15">
+                    <h4 class="text-sm font-semibold text-gray-800 dark:text-white/90">
+                        {{ session('success-message') }}
+                    </h4>
+                </div>
+            @endif
+
+            @if (session()->has('error-message'))
+                <div class="mb-4 rounded-xl border border-error-500 bg-error-50 p-4 dark:border-error-500/30 dark:bg-error-500/15">
+                    <h4 class="text-sm font-semibold text-gray-800 dark:text-white/90">
+                        {{ session('error-message') }}
+                    </h4>
+                </div>
+            @endif
+
             <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
                 <div class="border-t border-gray-100 p-5 sm:p-6 dark:border-gray-800">
                     <!-- Table Five -->
@@ -20,6 +36,21 @@
                                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
                                     KYC Requests
                                 </h3>
+                            </div>
+                            <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+                                <button type="button" wire:click="approveCurrentPage"
+                                    wire:loading.attr="disabled" wire:target="approveCurrentPage"
+                                    class="inline-flex items-center justify-center rounded-lg bg-success-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-success-600 disabled:pointer-events-none disabled:opacity-50">
+                                    <span wire:loading.remove wire:target="approveCurrentPage">Auto Approve</span>
+                                    <span wire:loading wire:target="approveCurrentPage">Approving...</span>
+                                </button>
+                                <button type="button" wire:click="approveAllPending"
+                                    wire:confirm="Approve all pending KYC requests?"
+                                    wire:loading.attr="disabled" wire:target="approveAllPending"
+                                    class="inline-flex items-center justify-center rounded-lg bg-success-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-success-600 disabled:pointer-events-none disabled:opacity-50">
+                                    <span wire:loading.remove wire:target="approveAllPending">Approve All KYC</span>
+                                    <span wire:loading wire:target="approveAllPending">Approving...</span>
+                                </button>
                             </div>
                         </div>
 

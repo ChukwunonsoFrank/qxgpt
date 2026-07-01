@@ -155,7 +155,7 @@
                                 </div>
                             </div>
 
-                            <input id="file-upload" type="file" wire:model="screenshot" class="hidden" />
+                            <input id="file-upload" type="file" wire:model="screenshot" accept="image/jpeg,image/png" class="hidden" />
 
                             <div class="mt-1 text-xs text-gray-400" wire:loading.remove wire:target="screenshot">
                                 @if ($screenshot)

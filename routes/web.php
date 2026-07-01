@@ -65,17 +65,17 @@ use Illuminate\Support\Facades\Storage;
 Route::get("/link-storage", function () {
   Artisan::call("storage:link");
   dd("storage linked");
-});
+})->middleware(["auth", "admin"]);
 
 Route::get("/clear-cache", function () {
   Artisan::call("optimize:clear");
   dd("cleared cache");
-});
+})->middleware(["auth", "admin"]);
 
 Route::get("/cache", function () {
   Artisan::call("optimize");
   dd("cached");
-});
+})->middleware(["auth", "admin"]);
 
 Route::get("/private-file/{path}", [PrivateFileController::class, "show"])
   ->where("path", ".*")

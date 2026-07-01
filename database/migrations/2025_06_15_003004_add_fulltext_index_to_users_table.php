@@ -12,6 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (! in_array(DB::getDriverName(), ['mysql', 'mariadb'], true)) {
+            return;
+        }
+
         DB::statement('ALTER TABLE users ADD FULLTEXT INDEX users_name_email_fulltext (name, email)');
     }
 
@@ -20,6 +24,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        if (! in_array(DB::getDriverName(), ['mysql', 'mariadb'], true)) {
+            return;
+        }
+
         Schema::table('users', function (Blueprint $table) {
             $table->dropIndex('users_name_email_fulltext');
         });
