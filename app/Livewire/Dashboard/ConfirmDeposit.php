@@ -69,6 +69,15 @@ class ConfirmDeposit extends Component
 
     public function createDeposit()
     {
+        if ($this->userHasPendingDeposit()) {
+            $this->dispatch(
+                'deposit-error',
+                message: 'You have a pending deposit. Please wait for confirmation before requesting another.',
+            )->self();
+
+            return;
+        }
+
         try {
             $this->validate();
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -148,6 +157,14 @@ class ConfirmDeposit extends Component
     public function formatAmountToPay()
     {
         return '$'.strval($this->amountToPay).' USD';
+    }
+
+    private function userHasPendingDeposit(): bool
+    {
+        return Deposit::query()
+            ->where('user_id', auth()->id())
+            ->where('status', 'pending')
+            ->exists();
     }
 
     public function render()
