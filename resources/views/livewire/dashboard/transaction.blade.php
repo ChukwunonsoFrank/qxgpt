@@ -35,9 +35,12 @@
                                 class="bg-dim w-full rounded-lg flex flex-col space-y-2 p-3 px-4 mb-3">
                                 <div class="flex items-start gap-x-3">
                                     <div class="flex-none">
-                                        <img class="w-7"
-                                            src="{{ asset('storage/' . $this->getPaymentMethodIconUrl($transaction['payment_method'])) }}"
-                                            alt="">
+                                        @if ($iconUrl = $this->getPaymentMethodIconUrl($transaction['payment_method']))
+                                            <img class="w-7" src="{{ asset('storage/' . $iconUrl) }}"
+                                                alt="{{ $transaction['payment_method'] }}">
+                                        @else
+                                            <div class="size-7 rounded-full bg-[#26252a]"></div>
+                                        @endif
                                     </div>
                                     <div class="flex-1">
                                         <div class="flex items-center">
@@ -124,9 +127,12 @@
                                 class="bg-dim w-full rounded-lg flex flex-col space-y-2 p-3 px-4 mb-3">
                                 <div class="flex items-start gap-x-3">
                                     <div class="flex-none">
-                                        <img class="w-7"
-                                            src="{{ asset('storage/' . $this->getPaymentMethodIconUrl($deposit['payment_method'])) }}"
-                                            alt="">
+                                        @if ($iconUrl = $this->getPaymentMethodIconUrl($deposit['payment_method']))
+                                            <img class="w-7" src="{{ asset('storage/' . $iconUrl) }}"
+                                                alt="{{ $deposit['payment_method'] }}">
+                                        @else
+                                            <div class="size-7 rounded-full bg-[#26252a]"></div>
+                                        @endif
                                     </div>
                                     <div class="flex-1">
                                         <div class="flex items-center">
@@ -192,9 +198,12 @@
                                 class="bg-dim w-full rounded-lg flex flex-col space-y-2 p-3 px-4 mb-3">
                                 <div class="flex items-start gap-x-3">
                                     <div class="flex-none">
-                                        <img class="w-7"
-                                            src="{{ asset('storage/' . $this->getPaymentMethodIconUrl($withdrawal['payment_method'])) }}"
-                                            alt="">
+                                        @if ($iconUrl = $this->getPaymentMethodIconUrl($withdrawal['payment_method']))
+                                            <img class="w-7" src="{{ asset('storage/' . $iconUrl) }}"
+                                                alt="{{ $withdrawal['payment_method'] }}">
+                                        @else
+                                            <div class="size-7 rounded-full bg-[#26252a]"></div>
+                                        @endif
                                     </div>
                                     <div class="flex-1">
                                         <div class="flex items-center">

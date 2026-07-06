@@ -4,7 +4,6 @@ namespace App\Livewire\Dashboard;
 
 use Livewire\Component;
 use App\Models\Deposit;
-use App\Models\PaymentMethod;
 use App\Models\Withdrawal;
 use Livewire\Attributes\Layout;
 
@@ -25,7 +24,8 @@ class Transaction extends Component
 
     public $totalTransactions;
 
-    public $paymentMethods;
+    /** @var array<string, string> */
+    public array $paymentMethodIconUrls = [];
 
     public $activeTab = "all";
 
@@ -36,7 +36,7 @@ class Transaction extends Component
             $this->dispatch("deposit-created", message: $message)->self();
         }
 
-        $this->paymentMethods = PaymentMethod::all();
+        $this->paymentMethodIconUrls = $this->paymentMethodIconCatalog();
         $this->totalDeposits = Deposit::where(
             "user_id",
             "=",
@@ -89,12 +89,9 @@ class Transaction extends Component
         );
     }
 
-    public function getPaymentMethodIconUrl(string $paymentMethod): string
+    public function getPaymentMethodIconUrl(string $paymentMethod): ?string
     {
-        $filtered = $this->paymentMethods->filter(
-            fn(PaymentMethod $value) => $value["name"] === $paymentMethod,
-        );
-        return $filtered->first()["icon_url"];
+        return $this->paymentMethodIconUrls[$paymentMethod] ?? null;
     }
 
     public function getStatusIndicatorColor(string $status)
@@ -110,6 +107,37 @@ class Transaction extends Component
         if ($status === "declined") {
             return "bg-red-600";
         }
+
+        return "bg-zinc-600";
+    }
+
+    private function paymentMethodIconCatalog(): array
+    {
+        return [
+            "Bitcoin" => "payment-method-icon/btc.svg",
+            "Ethereum" => "payment-method-icon/eth.svg",
+            "USDT TRC20" => "payment-method-icon/usdt-trc20.svg",
+            "USDT BEP20" => "payment-method-icon/usdt-bep20.svg",
+            "USDT ERC20" => "payment-method-icon/usdt-erc20.svg",
+            "USDT Polygon" => "payment-method-icon/usdt-polygon.svg",
+            "USDT Solana" => "payment-method-icon/usdt-sol.svg",
+            "USDC ERC20" => "payment-method-icon/usdc-erc20.svg",
+            "USDC BEP20" => "payment-method-icon/usdc-bep20.svg",
+            "USDC TRC20" => "payment-method-icon/usdc-trc20.svg",
+            "USDC Polygon" => "payment-method-icon/usdc-polygon.svg",
+            "USDC Solana" => "payment-method-icon/usdc-sol.svg",
+            "Solana" => "payment-method-icon/sol.svg",
+            "LTC" => "payment-method-icon/ltc.svg",
+            "Litecoin" => "payment-method-icon/ltc.svg",
+            "Binance Coin (BNB)" => "payment-method-icon/bnb.svg",
+            "BNB" => "payment-method-icon/bnb.svg",
+            "Tron" => "payment-method-icon/tron.svg",
+            "XRP" => "payment-method-icon/xrp.svg",
+            "BCH" => "payment-method-icon/bch.svg",
+            "Bitcoin Cash" => "payment-method-icon/bch.svg",
+            "Dogecoin" => "payment-method-icon/doge.svg",
+            "DASH" => "payment-method-icon/dash.svg",
+        ];
     }
 
     public function render()
