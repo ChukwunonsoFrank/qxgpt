@@ -36,7 +36,7 @@
                                 <div class="flex items-start gap-x-3">
                                     <div class="flex-none">
                                         @if ($iconUrl = $this->getPaymentMethodIconUrl($transaction['payment_method']))
-                                            <img class="w-7" src="{{ asset('storage/' . $iconUrl) }}"
+                                            <img class="w-7" src="{{ Storage::url($iconUrl) }}"
                                                 alt="{{ $transaction['payment_method'] }}">
                                         @else
                                             <div class="size-7 rounded-full bg-[#26252a]"></div>
@@ -128,7 +128,7 @@
                                 <div class="flex items-start gap-x-3">
                                     <div class="flex-none">
                                         @if ($iconUrl = $this->getPaymentMethodIconUrl($deposit['payment_method']))
-                                            <img class="w-7" src="{{ asset('storage/' . $iconUrl) }}"
+                                            <img class="w-7" src="{{ Storage::url($iconUrl) }}"
                                                 alt="{{ $deposit['payment_method'] }}">
                                         @else
                                             <div class="size-7 rounded-full bg-[#26252a]"></div>
@@ -199,7 +199,7 @@
                                 <div class="flex items-start gap-x-3">
                                     <div class="flex-none">
                                         @if ($iconUrl = $this->getPaymentMethodIconUrl($withdrawal['payment_method']))
-                                            <img class="w-7" src="{{ asset('storage/' . $iconUrl) }}"
+                                            <img class="w-7" src="{{ Storage::url($iconUrl) }}"
                                                 alt="{{ $withdrawal['payment_method'] }}">
                                         @else
                                             <div class="size-7 rounded-full bg-[#26252a]"></div>
